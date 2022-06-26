@@ -1,6 +1,6 @@
 
 
-<img src="https://raw.githubusercontent.com/Imtiyaz2007/Asteroid/master/logo.png" alt="drawing" width="200"/>
+<img src="https://raw.githubusercontent.com/asteroid-softwares/Asteroid/master/logo.png" alt="drawing" width="200"/>
 
 
 
