@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  *
- * Copyright (c) 2022 by Asteroid Softwares
+ * Copyright (c) 2023 by Imtiyaz Allam
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,7 +31,7 @@ import org.asteroid.util.FileMissingException;
 
 /**
  *
- * @author Asteroid Softwares
+ * @author Imtiyaz Allam
  */
 public final class Files {
 
@@ -122,58 +122,34 @@ public final class Files {
             throw new org.asteroid.util.FileMissingException();
     }
 
+    /**
+     * Read at a particular line of the file
+     * 
+     * @param line Line number that is to be read. The numbering is similar to indexing (First line is 0)
+     * @return The text at the particular line
+     */
     public String readAt(int line) {
-        int l = 0;
         try {
-            FileReader fl = new FileReader(file);
-            BufferedReader bf = new BufferedReader(fl);
-            if (file.exists()) {
-                String s = bf.readLine();
-                while (s != null) {
-                    if (l == line)
-                        return s;
-                    s = bf.readLine();
-                    if (s == null)
-                        break;
-                    l++;
-                }
-                if (s == null)
-                    throw new FileLineOutOfBoundIndex();
-            } else
-                throw new org.asteroid.util.FileMissingException();
-        } catch (FileNotFoundException e) {
-            throw new FileMissingException();
-        } catch (IOException e) {
-            throw new InputOutputError();
+            return readEverything().split("\n")[line];
+        } catch (ArrayIndexOutOfBoundsException e) {
+            throw new FileLineOutOfBoundIndex();
         }
-        return "";
     }
 
+    /**
+     * Counts the number of line in the file
+     * 
+     * @return Number of lines in the file
+     */
     public int countLine() {
-        int l = 0;
-        try {
-            FileReader fl = new FileReader(file);
-            BufferedReader bf = new BufferedReader(fl);
-            if (file.exists()) {
-                String s = bf.readLine();
-                while (s != null) {
-                    l++;
-                    s = bf.readLine();
-                    if (s == null)
-                        break;
-                }
-                if (s == null)
-                    throw new FileLineOutOfBoundIndex();
-            } else
-                throw new org.asteroid.util.FileMissingException();
-        } catch (FileNotFoundException e) {
-            throw new FileMissingException();
-        } catch (IOException e) {
-            throw new InputOutputError();
-        }
-        return l;
+        return readEverything().split("\n").length;
     }
 
+    /**
+     * Reads the whole file and gives it at as a text. Lines in file is separated by new line character
+     * 
+     * @return All the text in the file.
+     */
     public String readEverything() {
         String inString = "";
         try {
@@ -197,26 +173,11 @@ public final class Files {
         }
     }
     
+    /**
+     * Prints all the text in the file
+     */
     public void printFile() {
-        try {
-            if (file.exists()) {
-                FileReader fl = new FileReader(file);
-                BufferedReader bf = new BufferedReader(fl);
-                String s = bf.readLine();
-                while (s != null) {
-                    System.out.println(s);
-                    s = bf.readLine();
-                    
-                    if (s == null)
-                        break;
-                }
-            } else
-                throw new org.asteroid.util.FileMissingException();
-        } catch (FileNotFoundException e) {
-            throw new FileMissingException();
-        } catch (IOException e) {
-            throw new InputOutputError();
-        }
+        System.out.println(readEverything());
     }
 
     /**

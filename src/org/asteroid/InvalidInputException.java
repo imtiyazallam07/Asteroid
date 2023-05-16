@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
- * 
- * Copyright (c) 2022 by Asteroid Softwares
+ *
+ * Copyright (c) 2023 by Imtiyaz Allam
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,30 +20,33 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-
 package org.asteroid;
 
 /**
  * Raised when the input doesn't matched with the selected data type
- * 
- * @author Asteroid Softwares
+ *
+ * @author Imtiyaz Allam
  */
 public class InvalidInputException extends RuntimeException {
 
     /**
-     * Constructs a new runtime exception 
+     * Creates an instance of <code>InvalidInputException</code> class with
+     * default detail message
+     *
      * @param dataTypeRequired Data type required to be accepted
      * @param dataTypeFound Data type entered
      */
     public InvalidInputException(String dataTypeRequired, String dataTypeFound) {
-        super("Required: " + dataTypeRequired +
-                "\nFound: " + dataTypeFound +
-                "\nYou entered invalid data");
+        super("Required: " + dataTypeRequired
+                + "\nFound: " + dataTypeFound
+                + "\nYou entered invalid data");
     }
 
     /**
-     * Constructs a new runtime exception with the specified detail message
-     * @param msg Message to be displayed
+     * Creates an instance of <code>InvalidInputException</code> class with the
+     * specified detail message
+     *
+     * @param msg detail message
      */
     public InvalidInputException(String msg) {
         super(msg);

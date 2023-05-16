@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
- * 
- * Copyright (c) 2022 by Asteroid Softwares
+ *
+ * Copyright (c) 2023 by Imtiyaz Allam
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,20 +20,30 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-
 package org.asteroid.graphics;
 
 /**
  * Raised when look and feel is unsupported or not found on the system
  *
- * @author Asteroid Softwares
+ * @author Imtiyaz Allam
  */
 public final class InvalidLookAndFeelException extends RuntimeException {
 
     /**
-     * Creates an instance of <code>InvalidLookAndFeelException</code>
+     * Creates an instance of <code>InvalidLookAndFeelException</code> class
+     * with default detail message
      */
     public InvalidLookAndFeelException() {
         super("The required theme is not supported or found on this System.");
+    }
+
+    /**
+     * Creates an instance of <code>InvalidLookAndFeelException</code> class
+     * with specified detail message
+     *
+     * @param msg detail message
+     */
+    public InvalidLookAndFeelException(String msg) {
+        super(msg);
     }
 }

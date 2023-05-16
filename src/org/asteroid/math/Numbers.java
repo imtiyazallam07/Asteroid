@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  *
- * Copyright (c) 2022 by Asteroid Softwares
+ * Copyright (c) 2023 by Imtiyaz Allam
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,7 +20,7 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package org.asteroid.maths;
+package org.asteroid.math;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +28,7 @@ import java.util.List;
 /**
  * It has many helpful methods related to number
  *
- * @author Asteroid Softwares
+ * @author Imtiyaz Allam
  */
 public class Numbers {
 
@@ -80,7 +80,7 @@ public class Numbers {
      */
     public static boolean hasOnlyNumbers(String a) {
         try {
-            Long.parseLong(a);
+            Long.valueOf(a);
         } catch (NumberFormatException e) {
             return false;
         }
@@ -95,14 +95,16 @@ public class Numbers {
      */
     public static boolean isPrime(int a) {
         boolean isPrime = true;
-        if (a <= 1)
+        if (a <= 1) {
             isPrime = false;
-        else
-            for (int i = 2; i <= a / 2; i++)
+        } else {
+            for (int i = 2; i <= a / 2; i++) {
                 if ((a % i) == 0) {
                     isPrime = false;
                     break;
                 }
+            }
+        }
         return isPrime;
     }
 
@@ -115,8 +117,9 @@ public class Numbers {
      * @return Root over value of the given number
      */
     public static double root(double number, double rootOver) {
-        if (number <= 0)
+        if (number <= 0) {
             return Math.sqrt(-1);
+        }
         return Math.pow(number, 1 / rootOver);
     }
 
@@ -128,12 +131,15 @@ public class Numbers {
      * @return HCF
      */
     public static int HCF(int a, int b) {
-        if (a <= 0 || b <= 0)
+        if (a <= 0 || b <= 0) {
             throw new InvalidNumberException();
+        }
         int i, hcf = 0;
-        for (i = 1; i <= a || i <= b; i++)
-            if (a % i == 0 && b % i == 0)
+        for (i = 1; i <= a || i <= b; i++) {
+            if (a % i == 0 && b % i == 0) {
                 hcf = i;
+            }
+        }
         return hcf;
     }
 
@@ -144,20 +150,23 @@ public class Numbers {
      * @return prime factor
      */
     public static Integer[] primeFactor(int n) {
-        if (n <= 0)
+        if (n <= 0) {
             throw new InvalidNumberException();
+        }
         java.util.ArrayList<Integer> a = new java.util.ArrayList<>();
         while (n % 2 == 0) {
             a.add(2);
             n /= 2;
         }
-        for (int i = 3; i <= Math.sqrt(n); i += 2)
+        for (int i = 3; i <= Math.sqrt(n); i += 2) {
             while (n % i == 0) {
                 a.add(i);
                 n /= i;
             }
-        if (n > 2)
+        }
+        if (n > 2) {
             a.add(n);
+        }
         return (a.toArray(new Integer[0]));
     }
 
@@ -229,13 +238,15 @@ public class Numbers {
      * @return LCM
      */
     public static int LCM(int n1, int n2) {
-        if (n1 <= 0 || n2 <= 0)
+        if (n1 <= 0 || n2 <= 0) {
             throw new InvalidNumberException();
+        }
         int lcm;
         lcm = (n1 > n2) ? n1 : n2;
         while (true) {
-            if (lcm % n1 == 0 && lcm % n2 == 0)
+            if (lcm % n1 == 0 && lcm % n2 == 0) {
                 break;
+            }
             ++lcm;
         }
         return lcm;
@@ -250,8 +261,9 @@ public class Numbers {
      * @return
      */
     public static boolean arePythagoraeanTriplet(double hypotenuse, double perpendicular, double base) {
-        if (hypotenuse <= 0 || perpendicular <= 0 || base <= 0)
+        if (hypotenuse <= 0 || perpendicular <= 0 || base <= 0) {
             throw new InvalidNumberException();
+        }
         return (hypotenuse == Math.sqrt(Math.pow(base, 2) + Math.pow(perpendicular, 2)));
     }
 
@@ -263,8 +275,9 @@ public class Numbers {
      */
     public static int reverseNumber(int num) {
         int reversed = 0;
-        if (num <= 0)
+        if (num <= 0) {
             throw new InvalidNumberException();
+        }
         while (num != 0) {
             int digit = num % 10;
             reversed = reversed * 10 + digit;
@@ -281,11 +294,12 @@ public class Numbers {
      */
     public static byte reverseNumber(byte num) {
         byte reversed = 0;
-        if (num <= 0)
+        if (num <= 0) {
             throw new InvalidNumberException();
+        }
         while (num != 0) {
             int digit = num % 10;
-            reversed = (byte)(reversed * 10 + digit);
+            reversed = (byte) (reversed * 10 + digit);
             num /= 10;
         }
         return reversed;
@@ -299,11 +313,12 @@ public class Numbers {
      */
     public static short reverseNumber(short num) {
         short reversed = 0;
-        if (num <= 0)
+        if (num <= 0) {
             throw new InvalidNumberException();
+        }
         while (num != 0) {
             int digit = num % 10;
-            reversed = (short)(reversed * 10 + digit);
+            reversed = (short) (reversed * 10 + digit);
             num /= 10;
         }
         return reversed;
@@ -317,10 +332,11 @@ public class Numbers {
      */
     public static long reverseNumber(long num) {
         long reversed = 0;
-        if (num <= 0)
+        if (num <= 0) {
             throw new InvalidNumberException();
+        }
         while (num != 0) {
-            int digit = (int)(num % 10);
+            int digit = (int) (num % 10);
             reversed = reversed * 10 + digit;
             num /= 10;
         }
@@ -334,8 +350,9 @@ public class Numbers {
      * @return reversed number
      */
     public static float reverseNumber(float num) {
-        if (num <= 0)
+        if (num <= 0) {
             throw new InvalidNumberException();
+        }
         int reverseda = 0, numa, reversedb = 0, numb;
         String[] s = (Float.toString(num)).split("\\.");
         numa = Integer.parseInt(s[0]);
@@ -361,12 +378,15 @@ public class Numbers {
      * @return  <code>true</code> if the number is a perfect number
      */
     public static boolean isPerfect(int num) {
-        if (num <= 0)
+        if (num <= 0) {
             throw new InvalidNumberException();
+        }
         int sum = 0, i;
-        for (i = 1; i <= num / 2; i++)
-            if (num % i == 0)
+        for (i = 1; i <= num / 2; i++) {
+            if (num % i == 0) {
                 sum += i;
+            }
+        }
         return (sum == num);
     }
 
@@ -377,8 +397,9 @@ public class Numbers {
      * @return <code>true</code> if the number is special
      */
     public static boolean isSpecial(int n) {
-        if (n <= 0)
+        if (n <= 0) {
             throw new InvalidNumberException();
+        }
         int i = n, factorialSum = 0;
         while (i > 0) {
             int digit = i % 10;
@@ -395,8 +416,12 @@ public class Numbers {
      * @return factorial
      */
     public static long getFactorial(int n) {
-        if (n <= 0)
+        if (n < 0) {
             throw new InvalidNumberException();
+        }
+        if (n == 0) {
+            return 1;
+        }
         long factorial = 1;
         int i = n < 0 ? -n : n;
         while (i > 0) {
@@ -413,13 +438,15 @@ public class Numbers {
      * @return <code>true</code> if the number is a palindrome
      */
     public static boolean isPalindrome(int no) {
-        if (no <= 0)
+        if (no <= 0) {
             throw new InvalidNumberException();
+        }
         String str = Integer.toString(no);
         int i = 0, j = str.length() - 1;
         while (i < j) {
-            if (str.charAt(i) != str.charAt(j))
+            if (str.charAt(i) != str.charAt(j)) {
                 return false;
+            }
             i++;
             j--;
         }
@@ -433,11 +460,13 @@ public class Numbers {
      * @return <code>true</code> if the number is niven
      */
     public static boolean isNiven(int n) {
-        if (n <= 0)
+        if (n <= 0) {
             throw new InvalidNumberException();
+        }
         int sum = 0;
-        for (int temp = n; temp > 0; temp /= 10)
+        for (int temp = n; temp > 0; temp /= 10) {
             sum += temp % 10;
+        }
         return (n % sum == 0);
     }
 
@@ -458,8 +487,9 @@ public class Numbers {
      * @return <code>true</code> if the number is armstrong
      */
     public static boolean isArmstrong(int number) {
-        if (number <= 0)
+        if (number <= 0) {
             throw new InvalidNumberException();
+        }
         int originalNumber, remainder, result = 0;
         originalNumber = number;
         while (originalNumber != 0) {
@@ -488,17 +518,20 @@ public class Numbers {
      * @return <code>true</code> if the number is unique
      */
     public static boolean isUnique(int number) {
-        if (number <= 0)
+        if (number <= 0) {
             throw new InvalidNumberException();
+        }
         String str = Integer.toString(number);
         int length = str.length();
         int flag = 0, i, j;
-        for (i = 0; i < length - 1; i++)
-            for (j = i + 1; j < length; j++)
+        for (i = 0; i < length - 1; i++) {
+            for (j = i + 1; j < length; j++) {
                 if (str.charAt(i) == str.charAt(j)) {
                     flag = 1;
                     break;
                 }
+            }
+        }
         return (flag == 0);
     }
 
@@ -509,10 +542,12 @@ public class Numbers {
      * @return <code>true</code> if the number is kaprekar
      */
     public static boolean isKaprekar(int n) {
-        if (n <= 0)
+        if (n <= 0) {
             throw new InvalidNumberException();
-        if (n == 1)
+        }
+        if (n == 1) {
             return true;
+        }
         int sq_n = n * n;
         int count_digits = 0;
         while (sq_n != 0) {
@@ -522,11 +557,13 @@ public class Numbers {
         sq_n = n * n;
         for (int r_digits = 1; r_digits < count_digits; r_digits++) {
             int eq_parts = (int) Math.pow(10, r_digits);
-            if (eq_parts == n)
+            if (eq_parts == n) {
                 continue;
+            }
             int sum = sq_n / eq_parts + sq_n % eq_parts;
-            if (sum == n)
+            if (sum == n) {
                 return true;
+            }
         }
         return false;
     }
@@ -538,8 +575,9 @@ public class Numbers {
      * @return <code>true</code> if the number is a perfect square
      */
     public static boolean isPerfectSqr(int num) {
-        if (num <= 0)
+        if (num <= 0) {
             throw new InvalidNumberException();
+        }
         double a = Math.sqrt(num);
         return a % 1 == 0;
     }
@@ -551,12 +589,14 @@ public class Numbers {
      * @return <code>true</code> if the number is Lychrel
      */
     public static boolean isLychrel(int number) {
-        if (number <= 0)
+        if (number <= 0) {
             throw new InvalidNumberException();
+        }
         for (int i = 0; i < 200; i++) {
             number = number + reverseNumber(number);
-            if (isPalindrome(number))
+            if (isPalindrome(number)) {
                 return false;
+            }
 
         }
         return true;
@@ -569,11 +609,13 @@ public class Numbers {
      * @return <code>true</code> if the number is Lucus
      */
     public static int isLucas(int n) {
-        if (n < 0)
+        if (n < 0) {
             throw new InvalidNumberException("The number is not valid.\nIt must be a and non-negetive value.");
+        }
         int a = 2, b = 1, c, i;
-        if (n == 0)
+        if (n == 0) {
             return a;
+        }
         for (i = 2; i <= n; i++) {
             c = a + b;
             a = b;
@@ -610,7 +652,7 @@ public class Numbers {
         n = (short) Math.abs(n);
         while (n != 0) {
             c++;
-            n = (short) (n /  10);
+            n = (short) (n / 10);
         }
 
         return c;
@@ -657,8 +699,9 @@ public class Numbers {
      * @return <code>true</code> if the number is Narcissistic
      */
     public static boolean isNarcissistic(int n) {
-        if (n <= 0)
+        if (n <= 0) {
             throw new InvalidNumberException();
+        }
         int l = countDigit(n);
         int dup = n;
         int sum = 0;
@@ -677,8 +720,9 @@ public class Numbers {
      * @return The sum of square of digits
      */
     private static int numSquareSum(int n) {
-        if (n <= 0)
+        if (n <= 0) {
             throw new InvalidNumberException();
+        }
         int squareSum = 0;
         while (n != 0) {
             squareSum += (n % 10) * (n % 10);
@@ -694,8 +738,9 @@ public class Numbers {
      * @return <code>true</code> if the number is a Happy Number
      */
     public static boolean isHappy(int n) {
-        if (n <= 0)
+        if (n <= 0) {
             throw new InvalidNumberException();
+        }
         int slow, fast;
         slow = fast = n;
         do {
@@ -712,8 +757,9 @@ public class Numbers {
      * @return <code>true</code> if the number is a Magic number
      */
     public static boolean isMagic(int n) {
-        if (n <= 0)
+        if (n <= 0) {
             throw new InvalidNumberException();
+        }
         int sum = 0;
         while (n > 0 || sum > 9) {
             if (n == 0) {
@@ -733,8 +779,9 @@ public class Numbers {
      * @return <code>true</code> if the number is a disarum
      */
     public static boolean isDisarium(int num) {
-        if (num <= 0)
+        if (num <= 0) {
             throw new InvalidNumberException();
+        }
         int sum = 0, rem, n;
         int len = countDigit(num);
         n = num;
@@ -754,14 +801,16 @@ public class Numbers {
      * @return <code>true</code> if the number is a pronic number
      */
     public static boolean isPronic(int num) {
-        if (num <= 0)
+        if (num <= 0) {
             throw new InvalidNumberException();
+        }
         int ans = 0;
-        for (int i = 0; i < num; i++)
+        for (int i = 0; i < num; i++) {
             if (i * (i + 1) == num) {
                 ans = 1;
                 break;
             }
+        }
         return (ans == 1);
     }
 
@@ -782,8 +831,9 @@ public class Numbers {
      * @return <code>true</code> if the number is automorphic
      */
     public static boolean isAutomorphic(int num) {
-        if (num <= 0)
+        if (num <= 0) {
             throw new InvalidNumberException();
+        }
         int sq_num = num * num;
         String str_num = Integer.toString(num);
         String square = Integer.toString(sq_num);
@@ -797,11 +847,14 @@ public class Numbers {
      * @return <code>true</code> if the number is a duck number
      */
     public static boolean isDuck(int num) {
-        if (num <= 0)
+        if (num <= 0) {
             throw new InvalidNumberException();
-        while (num > 0)
-            if (num % 10 == 0)
+        }
+        while (num > 0) {
+            if (num % 10 == 0) {
                 return true;
+            }
+        }
         return false;
     }
 
@@ -813,15 +866,20 @@ public class Numbers {
      * @return <code>true</code> if the number is an amicable
      */
     public static boolean isAmicable(int num1, int num2) {
-        if (num1 <= 0 || num2 <= 0)
+        if (num1 <= 0 || num2 <= 0) {
             throw new InvalidNumberException();
+        }
         int sum_num1 = 0, sum_num2 = 0;
-        for (int i = 1; i <= num1; i++)
-            if (num1 % i == 0)
+        for (int i = 1; i <= num1; i++) {
+            if (num1 % i == 0) {
                 sum_num1 += i;
-        for (int i = 1; i <= num2; i++)
-            if (num2 % i == 0)
+            }
+        }
+        for (int i = 1; i <= num2; i++) {
+            if (num2 % i == 0) {
                 sum_num2 += i;
+            }
+        }
         return (sum_num1 == sum_num2);
     }
 
@@ -832,8 +890,9 @@ public class Numbers {
      * @return <code>true</code> if the number is a circular prime number
      */
     public static boolean isCircularPrime(int number) {
-        if (number <= 0)
+        if (number <= 0) {
             throw new InvalidNumberException();
+        }
         int count = 0, temp = number;
         while (temp > 0) {
             count++;
@@ -844,8 +903,9 @@ public class Numbers {
             int rem = num % 10;
             int div = num / 10;
             num = (int) ((Math.pow(10, count - 1)) * rem) + div;
-            if (num == number)
+            if (num == number) {
                 return true;
+            }
         }
         return false;
     }
@@ -857,35 +917,41 @@ public class Numbers {
      * @return <code>true</code> if the number is a cyclic number
      */
     public static boolean isCyclic(long number) {
-        if (number <= 0)
+        if (number <= 0) {
             throw new InvalidNumberException();
+        }
         long num = number;
         int count = 0;
         int digit = (int) (num % 10);
         boolean allSame = true;
         while (num > 0) {
             count++;
-            if (num % 10 != digit)
+            if (num % 10 != digit) {
                 allSame = false;
+            }
             num = num / 10;
         }
-        if (allSame == true)
+        if (allSame == true) {
             return false;
+        }
         if (count % 2 == 0) {
             long halfPower = (long) Math.pow(10, count / 2);
             long firstHalf = number % halfPower;
-            if (firstHalf == firstHalf && isCyclic(firstHalf))
+            if (firstHalf == firstHalf && isCyclic(firstHalf)) {
                 return false;
+            }
         }
         num = number;
         while (true) {
             long rem = num % 10;
             long div = num / 10;
             num = (long) (Math.pow(10, count - 1)) * rem + div;
-            if (num == number)
+            if (num == number) {
                 break;
-            if (num % number != 0)
+            }
+            if (num % number != 0) {
                 return false;
+            }
         }
         return true;
     }
@@ -897,8 +963,9 @@ public class Numbers {
      * @return <code>true</code> if the number is a neon number
      */
     public static boolean isNeon(int number) {
-        if (number <= 0)
+        if (number <= 0) {
             throw new InvalidNumberException();
+        }
         int sq = number * number;
         int sum_digits = 0;
         while (sq != 0) {
@@ -915,16 +982,18 @@ public class Numbers {
      * @return <code>true</code> if the number is mersenne
      */
     public static boolean isMersenne(int n) {
-        if (n <= 0)
+        if (n <= 0) {
             throw new InvalidNumberException();
+        }
         int n1 = n + 1;
         int power;
         for (int i = 0;; i++) {
             power = (int) Math.pow(2, i);
-            if (power > n1)
+            if (power > n1) {
                 break;
-            else if (power == n1)
+            } else if (power == n1) {
                 return false;
+            }
         }
         return false;
     }
@@ -936,8 +1005,9 @@ public class Numbers {
      * @return <code>true</code> if the number is a keith number
      */
     public static boolean isKeith(int number) {
-        if (number <= 0)
+        if (number <= 0) {
             throw new InvalidNumberException();
+        }
         java.util.ArrayList<Integer> terms = new java.util.ArrayList<>();
         int temp = number, n = 0;
         while (temp > 0) {
@@ -949,8 +1019,9 @@ public class Numbers {
         int next_term = 0, i = n;
         while (next_term < number) {
             next_term = 0;
-            for (int j = 1; j <= n; j++)
+            for (int j = 1; j <= n; j++) {
                 next_term += terms.get(i - j);
+            }
 
             terms.add(next_term);
             i++;
@@ -965,14 +1036,17 @@ public class Numbers {
      * @return <code>true</code> if the number is a lucky number
      */
     public static boolean isLucky(int n) {
-        if (n <= 0)
+        if (n <= 0) {
             throw new InvalidNumberException();
+        }
         int counter = 2;
         int next_position = n;
-        if (counter > n)
+        if (counter > n) {
             return true;
-        if (n % counter == 0)
+        }
+        if (n % counter == 0) {
             return false;
+        }
         next_position -= next_position / counter;
         counter++;
         return isLucky(next_position);
@@ -1004,8 +1078,9 @@ public class Numbers {
      */
     public static int max(int... a) {
         int max = a[0];
-        for (int num : a)
+        for (int num : a) {
             max = Math.max(max, num);
+        }
         return max;
     }
 
@@ -1017,8 +1092,9 @@ public class Numbers {
      */
     public static long max(long... a) {
         long max = a[0];
-        for (long num : a)
+        for (long num : a) {
             max = Math.max(max, num);
+        }
         return max;
     }
 
@@ -1030,8 +1106,9 @@ public class Numbers {
      */
     public static double max(double... a) {
         double max = a[0];
-        for (double num : a)
+        for (double num : a) {
             max = Math.max(max, num);
+        }
         return max;
     }
 
@@ -1043,8 +1120,9 @@ public class Numbers {
      */
     public static float max(float... a) {
         float max = a[0];
-        for (float num : a)
+        for (float num : a) {
             max = Math.max(max, num);
+        }
         return max;
     }
 
@@ -1056,8 +1134,9 @@ public class Numbers {
      */
     public static int min(int... a) {
         int min = a[0];
-        for (int num : a)
+        for (int num : a) {
             min = Math.min(min, num);
+        }
         return min;
     }
 
@@ -1069,8 +1148,9 @@ public class Numbers {
      */
     public static long min(long... a) {
         long min = a[0];
-        for (long num : a)
+        for (long num : a) {
             min = Math.min(min, num);
+        }
         return min;
     }
 
@@ -1082,8 +1162,9 @@ public class Numbers {
      */
     public static double min(double... a) {
         double min = a[0];
-        for (double num : a)
+        for (double num : a) {
             min = Math.min(min, num);
+        }
         return min;
     }
 
@@ -1095,8 +1176,9 @@ public class Numbers {
      */
     public static float min(float... a) {
         float min = a[0];
-        for (float num : a)
+        for (float num : a) {
             min = Math.min(min, num);
+        }
         return min;
     }
 
@@ -1119,23 +1201,25 @@ public class Numbers {
      * returns a sequence of given number between a given range
      *
      * @param end integer before which sequence is to be returned. The sequence
-     * doesn't include the <code>end</code> value
+     * doesn"t include the <code>end</code> value
      * @param step increment between the two number in the sequence
      * @return a sequence of given number between a given range
      */
     public static Double[] range(int end, double step) {
-        if (end < 0 || step <= 0)
+        if (end < 0 || step <= 0) {
             throw new InvalidNumberException();
+        }
         List<Double> lst = new ArrayList<>();
         double d = 0;
         Double[] dbl = new Double[lst.size()];
-        do
+        do {
             if (d < end) {
                 lst.add(d);
                 d += step;
-            } else
+            } else {
                 break;
-        while (true);
+            }
+        } while (true);
         return lst.toArray(dbl);
     }
 
@@ -1144,24 +1228,27 @@ public class Numbers {
      *
      * @param start integer starting from which the sequence is to be returned
      * @param end integer before which sequence is to be returned. The sequence
-     * doesn't include the <code>end</code> value
+     * doesn"t include the <code>end</code> value
      * @return a sequence of given number between a given range
      */
     public static Integer[] range(int start, int end) {
-        if (end < 0)
+        if (end < 0) {
             throw new InvalidNumberException();
-        if (start > end)
+        }
+        if (start > end) {
             throw new InvalidNumberException("Starting value must be less than ending vale");
+        }
         List<Integer> lst = new ArrayList<>();
         int d = start;
         Integer[] dbl = new Integer[lst.size()];
-        do
+        do {
             if (d < end) {
                 lst.add(d);
                 d++;
-            } else
+            } else {
                 break;
-        while (true);
+            }
+        } while (true);
         return lst.toArray(dbl);
     }
 
@@ -1169,22 +1256,24 @@ public class Numbers {
      * returns a sequence of given number between a given range
      *
      * @param end integer before which sequence is to be returned. The sequence
-     * doesn't include the <code>end</code> value
+     * doesn"t include the <code>end</code> value
      * @return a sequence of given number between a given range
      */
     public static Integer[] range(int end) {
-        if (end < 0)
+        if (end < 0) {
             throw new InvalidNumberException();
+        }
         List<Integer> lst = new ArrayList<>();
         int d = 0;
         Integer[] dbl = new Integer[lst.size()];
-        do
+        do {
             if (d < end) {
                 lst.add(d);
                 d++;
-            } else
+            } else {
                 break;
-        while (true);
+            }
+        } while (true);
         return lst.toArray(dbl);
     }
 
@@ -1193,25 +1282,28 @@ public class Numbers {
      *
      * @param start integer starting from which the sequence is to be returned
      * @param end integer before which sequence is to be returned. The sequence
-     * doesn't include the <code>end</code> value
+     * doesn"t include the <code>end</code> value
      * @param step increment between the two number in the sequence
      * @return a sequence of given number between a given range
      */
     public static Double[] range(int start, int end, double step) {
-        if (end < 0 || step <= 0)
+        if (end < 0 || step <= 0) {
             throw new InvalidNumberException();
-        if (start > end)
+        }
+        if (start > end) {
             throw new InvalidNumberException("Starting value must be less than ending vale");
+        }
         List<Double> lst = new ArrayList<>();
         double d = start;
         Double[] dbl = new Double[lst.size()];
-        do
+        do {
             if (d < end) {
                 lst.add(d);
                 d += step;
-            } else
+            } else {
                 break;
-        while (true);
+            }
+        } while (true);
         return lst.toArray(dbl);
     }
 
@@ -1220,25 +1312,28 @@ public class Numbers {
      *
      * @param start integer starting from which the sequence is to be returned
      * @param end integer before which sequence is to be returned. The sequence
-     * doesn't include the <code>end</code> value
+     * doesn"t include the <code>end</code> value
      * @param step increment between the two number in the sequence
      * @return a sequence of given number between a given range
      */
     public static Integer[] range(int start, int end, int step) {
-        if (end < 0 || step <= 0)
+        if (end < 0 || step <= 0) {
             throw new InvalidNumberException();
-        if (start > end)
+        }
+        if (start > end) {
             throw new InvalidNumberException("Starting value must be less than ending vale");
+        }
         List<Integer> lst = new ArrayList<>();
         int d = start;
         Integer[] dbl = new Integer[lst.size()];
-        do
+        do {
             if (d < end) {
                 lst.add(d);
                 d += step;
-            } else
+            } else {
                 break;
-        while (true);
+            }
+        } while (true);
         return lst.toArray(dbl);
     }
 
@@ -1249,12 +1344,14 @@ public class Numbers {
      * @return returns true if the array is sorted in ascending order
      */
     public static boolean isSorted(int[] arr) {
-        if (arr.length < 2)
+        if (arr.length < 2) {
             return true;
+        }
         int last = arr[0];
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i] < last)
+            if (arr[i] < last) {
                 return false;
+            }
             last = arr[i];
         }
         return true;
@@ -1267,12 +1364,14 @@ public class Numbers {
      * @return returns true if the array is sorted in ascending order
      */
     public static boolean isSorted(Integer[] arr) {
-        if (arr.length < 2)
+        if (arr.length < 2) {
             return true;
+        }
         int last = arr[0];
         for (Integer arr1 : arr) {
-            if (arr1 < last)
+            if (arr1 < last) {
                 return false;
+            }
             last = arr1;
         }
         return true;
@@ -1285,12 +1384,14 @@ public class Numbers {
      * @return returns true if the array is sorted in ascending order
      */
     public static boolean isSorted(short[] arr) {
-        if (arr.length < 2)
+        if (arr.length < 2) {
             return true;
+        }
         short last = arr[0];
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i] < last)
+            if (arr[i] < last) {
                 return false;
+            }
             last = arr[i];
         }
         return true;
@@ -1303,12 +1404,14 @@ public class Numbers {
      * @return returns true if the array is sorted in ascending order
      */
     public static boolean isSorted(Short[] arr) {
-        if (arr.length < 2)
+        if (arr.length < 2) {
             return true;
+        }
         short last = arr[0];
         for (Short arr1 : arr) {
-            if (arr1 < last)
+            if (arr1 < last) {
                 return false;
+            }
             last = arr1;
         }
         return true;
@@ -1321,12 +1424,14 @@ public class Numbers {
      * @return returns true if the array is sorted in ascending order
      */
     public static boolean isSorted(long[] arr) {
-        if (arr.length < 2)
+        if (arr.length < 2) {
             return true;
+        }
         long last = arr[0];
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i] < last)
+            if (arr[i] < last) {
                 return false;
+            }
             last = arr[i];
         }
         return true;
@@ -1339,12 +1444,14 @@ public class Numbers {
      * @return returns true if the array is sorted in ascending order
      */
     public static boolean isSorted(Long[] arr) {
-        if (arr.length < 2)
+        if (arr.length < 2) {
             return true;
+        }
         long last = arr[0];
         for (Long arr1 : arr) {
-            if (arr1 < last)
+            if (arr1 < last) {
                 return false;
+            }
             last = arr1;
         }
         return true;
@@ -1357,12 +1464,14 @@ public class Numbers {
      * @return returns true if the array is sorted in ascending order
      */
     public static boolean isSorted(byte[] arr) {
-        if (arr.length < 2)
+        if (arr.length < 2) {
             return true;
+        }
         byte last = arr[0];
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i] < last)
+            if (arr[i] < last) {
                 return false;
+            }
             last = arr[i];
         }
         return true;
@@ -1375,12 +1484,14 @@ public class Numbers {
      * @return returns true if the array is sorted in ascending order
      */
     public static boolean isSorted(Byte[] arr) {
-        if (arr.length < 2)
+        if (arr.length < 2) {
             return true;
+        }
         byte last = arr[0];
         for (Byte arr1 : arr) {
-            if (arr1 < last)
+            if (arr1 < last) {
                 return false;
+            }
             last = arr1;
         }
         return true;
@@ -1393,12 +1504,14 @@ public class Numbers {
      * @return returns true if the array is sorted in ascending order
      */
     public static boolean isSorted(Double[] arr) {
-        if (arr.length < 2)
+        if (arr.length < 2) {
             return true;
+        }
         double last = arr[0];
         for (Double arr1 : arr) {
-            if (arr1 < last)
+            if (arr1 < last) {
                 return false;
+            }
             last = arr1;
         }
         return true;
@@ -1411,12 +1524,14 @@ public class Numbers {
      * @return returns true if the array is sorted in ascending order
      */
     public static boolean isSorted(double[] arr) {
-        if (arr.length < 2)
+        if (arr.length < 2) {
             return true;
+        }
         double last = arr[0];
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i] < last)
+            if (arr[i] < last) {
                 return false;
+            }
             last = arr[i];
         }
         return true;
@@ -1429,12 +1544,14 @@ public class Numbers {
      * @return returns true if the array is sorted in ascending order
      */
     public static boolean isSorted(float[] arr) {
-        if (arr.length < 2)
+        if (arr.length < 2) {
             return true;
+        }
         float last = arr[0];
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i] < last)
+            if (arr[i] < last) {
                 return false;
+            }
             last = arr[i];
         }
         return true;
@@ -1447,12 +1564,14 @@ public class Numbers {
      * @return returns true if the array is sorted in ascending order
      */
     public static boolean isSorted(Float[] arr) {
-        if (arr.length < 2)
+        if (arr.length < 2) {
             return true;
+        }
         float last = arr[0];
         for (Float arr1 : arr) {
-            if (arr1 < last)
+            if (arr1 < last) {
                 return false;
+            }
             last = arr1;
         }
         return true;
@@ -1465,12 +1584,14 @@ public class Numbers {
      * @return returns true if the array is sorted in descending order
      */
     public static boolean isSortedDecending(int[] arr) {
-        if (arr.length < 2)
+        if (arr.length < 2) {
             return true;
+        }
         int last = arr[0];
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i] > last)
+            if (arr[i] > last) {
                 return false;
+            }
             last = arr[i];
         }
         return true;
@@ -1483,12 +1604,14 @@ public class Numbers {
      * @return returns true if the array is sorted in descending order
      */
     public static boolean isSortedDecending(Integer[] arr) {
-        if (arr.length < 2)
+        if (arr.length < 2) {
             return true;
+        }
         int last = arr[0];
         for (Integer arr1 : arr) {
-            if (arr1 > last)
+            if (arr1 > last) {
                 return false;
+            }
             last = arr1;
         }
         return true;
@@ -1501,12 +1624,14 @@ public class Numbers {
      * @return returns true if the array is sorted in descending order
      */
     public static boolean isSortedDecending(short[] arr) {
-        if (arr.length < 2)
+        if (arr.length < 2) {
             return true;
+        }
         short last = arr[0];
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i] > last)
+            if (arr[i] > last) {
                 return false;
+            }
             last = arr[i];
         }
         return true;
@@ -1519,12 +1644,14 @@ public class Numbers {
      * @return returns true if the array is sorted in descending order
      */
     public static boolean isSortedDecending(Short[] arr) {
-        if (arr.length < 2)
+        if (arr.length < 2) {
             return true;
+        }
         short last = arr[0];
         for (Short arr1 : arr) {
-            if (arr1 > last)
+            if (arr1 > last) {
                 return false;
+            }
             last = arr1;
         }
         return true;
@@ -1537,12 +1664,14 @@ public class Numbers {
      * @return returns true if the array is sorted in descending order
      */
     public static boolean isSortedDecending(long[] arr) {
-        if (arr.length < 2)
+        if (arr.length < 2) {
             return true;
+        }
         long last = arr[0];
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i] > last)
+            if (arr[i] > last) {
                 return false;
+            }
             last = arr[i];
         }
         return true;
@@ -1555,12 +1684,14 @@ public class Numbers {
      * @return returns true if the array is sorted in descending order
      */
     public static boolean isSortedDecending(Long[] arr) {
-        if (arr.length < 2)
+        if (arr.length < 2) {
             return true;
+        }
         long last = arr[0];
         for (Long arr1 : arr) {
-            if (arr1 > last)
+            if (arr1 > last) {
                 return false;
+            }
             last = arr1;
         }
         return true;
@@ -1573,12 +1704,14 @@ public class Numbers {
      * @return returns true if the array is sorted in descending order
      */
     public static boolean isSortedDecending(byte[] arr) {
-        if (arr.length < 2)
+        if (arr.length < 2) {
             return true;
+        }
         byte last = arr[0];
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i] > last)
+            if (arr[i] > last) {
                 return false;
+            }
             last = arr[i];
         }
         return true;
@@ -1591,12 +1724,14 @@ public class Numbers {
      * @return returns true if the array is sorted in descending order
      */
     public static boolean isSortedDecending(Byte[] arr) {
-        if (arr.length < 2)
+        if (arr.length < 2) {
             return true;
+        }
         byte last = arr[0];
         for (Byte arr1 : arr) {
-            if (arr1 > last)
+            if (arr1 > last) {
                 return false;
+            }
             last = arr1;
         }
         return true;
@@ -1609,12 +1744,14 @@ public class Numbers {
      * @return returns true if the array is sorted in descending order
      */
     public static boolean isSortedDecending(Double[] arr) {
-        if (arr.length < 2)
+        if (arr.length < 2) {
             return true;
+        }
         double last = arr[0];
         for (Double arr1 : arr) {
-            if (arr1 > last)
+            if (arr1 > last) {
                 return false;
+            }
             last = arr1;
         }
         return true;
@@ -1627,12 +1764,14 @@ public class Numbers {
      * @return returns true if the array is sorted in descending order
      */
     public static boolean isSortedDecending(double[] arr) {
-        if (arr.length < 2)
+        if (arr.length < 2) {
             return true;
+        }
         double last = arr[0];
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i] > last)
+            if (arr[i] > last) {
                 return false;
+            }
             last = arr[i];
         }
         return true;
@@ -1645,12 +1784,14 @@ public class Numbers {
      * @return returns true if the array is sorted in descending order
      */
     public static boolean isSortedDecending(float[] arr) {
-        if (arr.length < 2)
+        if (arr.length < 2) {
             return true;
+        }
         float last = arr[0];
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i] > last)
+            if (arr[i] > last) {
                 return false;
+            }
             last = arr[i];
         }
         return true;
@@ -1663,12 +1804,14 @@ public class Numbers {
      * @return returns true if the array is sorted in descending order
      */
     public static boolean isSortedDecending(Float[] arr) {
-        if (arr.length < 2)
+        if (arr.length < 2) {
             return true;
+        }
         float last = arr[0];
         for (Float arr1 : arr) {
-            if (arr1 > last)
+            if (arr1 > last) {
                 return false;
+            }
             last = arr1;
         }
         return true;
@@ -1686,10 +1829,12 @@ public class Numbers {
         int len = countDigit(num);
         int ori = index;
         System.out.println(len);
-        if (index < 0)
+        if (index < 0) {
             index = len + index;
-        if (len <= index || index < 0)
+        }
+        if (len <= index || index < 0) {
             throw new NumberIndexOutOfBoundsException("Number index out of range: " + ori);
+        }
         List<Integer> in = new ArrayList<>();
         num = reverseNumber(num);
         while (num > 0) {
@@ -1711,10 +1856,12 @@ public class Numbers {
         int len = countDigit(num);
         int ori = index;
         System.out.println(len);
-        if (index < 0)
+        if (index < 0) {
             index = len + index;
-        if (len <= index || index < 0)
+        }
+        if (len <= index || index < 0) {
             throw new NumberIndexOutOfBoundsException("Number index out of range: " + ori);
+        }
         List<Long> in = new ArrayList<>();
         num = reverseNumber(num);
         while (num > 0) {
@@ -1736,10 +1883,12 @@ public class Numbers {
         int len = countDigit(num);
         int ori = index;
         System.out.println(len);
-        if (index < 0)
+        if (index < 0) {
             index = len + index;
-        if (len <= index || index < 0)
+        }
+        if (len <= index || index < 0) {
             throw new NumberIndexOutOfBoundsException("Number index out of range: " + ori);
+        }
         List<Integer> in = new ArrayList<>();
         num = reverseNumber(num);
         while (num > 0) {
@@ -1761,10 +1910,12 @@ public class Numbers {
         int len = countDigit(num);
         int ori = index;
         System.out.println(len);
-        if (index < 0)
+        if (index < 0) {
             index = len + index;
-        if (len <= index || index < 0)
+        }
+        if (len <= index || index < 0) {
             throw new NumberIndexOutOfBoundsException("Number index out of range: " + ori);
+        }
         List<Integer> in = new ArrayList<>();
         num = reverseNumber(num);
         while (num > 0) {
@@ -1772,5 +1923,278 @@ public class Numbers {
             num /= 10;
         }
         return in.get(index);
+    }
+
+    /**
+     * Calculates and returns the value of Combination function [C(n, r)]
+     *
+     * @param n n value in C(n, r)
+     * @param r r value in C(n, r)
+     * @return Value of Combination function. [C(n, r)]
+     */
+    public static double nCr(int n, int r) {
+        return getFactorial(n) / (getFactorial(r) * getFactorial(n - r) * 1.0);
+    }
+
+    /**
+     * Calculates and returns the value of Permutation function [P(n, r)]
+     *
+     * @param n n value in P(n, r)
+     * @param r r value in P(n, r)
+     * @return Value of Permutation function. [P(n, r)]
+     */
+    public static double nPr(int n, int r) {
+        return getFactorial(n) / (getFactorial(n - r) * 1.0);
+    }
+
+    /**
+     * Calculate the nth term of AP
+     *
+     * @param a First term
+     * @param d Common Difference
+     * @param n Number of terms in AP
+     * @return nth term of the AP
+     */
+    public static double termOfAP(double a, double d, double n) {
+        return a + (n - 1) * d;
+    }
+
+    /**
+     * Calculates the sum of first n terms of the AP
+     *
+     * @param a First term
+     * @param d Common Difference
+     * @param n Number of term in AP
+     * @return Sum of first n terms in AP
+     */
+    public static double sumOfAP(double a, double d, double n) {
+        return (n / 2.0) * (2 * a + (n - 1) * d);
+    }
+
+    /**
+     * Find the nth term of GP
+     *
+     * @param a First term
+     * @param r Common ratio
+     * @param n Number of terms in AP
+     * @return nth term of GP
+     */
+    public static double termOfGP(double a, double r, double n) {
+        return a * Math.pow(r, n - 1);
+    }
+
+    /**
+     * Calculate the sum of first n terms of GP
+     *
+     * @param a First term
+     * @param r Common ratio
+     * @param n Number f terms in GP
+     * @return Sum of n terms in the GP
+     */
+    public static double sumOfGP(double a, double r, double n) {
+        return a * (Math.pow(r, n) - 1) / (r - 1);
+    }
+
+    /**
+     * Find the nth term of HP
+     *
+     * @param a First term
+     * @param d Common Difference
+     * @param n Number of terms in HP
+     * @return nth term of HP
+     */
+    public static double termOfHP(double a, double d, double n) {
+        return 1 / termOfAP(1 / a, d, n);
+    }
+
+    /**
+     * Calculate the sum of first n term of HP
+     *
+     * @param a First term
+     * @param d Common Difference
+     * @param n Number of terms in HP
+     * @return Sum of n term of HP
+     */
+    public static double sumOfHP(double a, double d, double n) {
+        double sum = 0;
+        for (int i = 1; i <= n; i++) {
+            sum += 1 / termOfAP(1 / a, d, n);
+        }
+        return sum;
+    }
+
+    /**
+     * It calculates the percentage. Here args is the array that is to be given
+     * example {1, 2, 3, 4, 5} sum of data given in this array is calculated and
+     * stored in a variable <b>sum</b>. Here full is the total sum of which
+     * percentage is to be calculated <u>sum</u> / <u>full</u> * 100
+     *
+     * @param args The numbers of which the percentage is to be calculated
+     * @param full The total sum of full from which the percentage is to be
+     * calculated
+     * @return Percentage
+     */
+    public static double caluclatePercentage(double full, double... args) {
+        double sum = 0;
+        for (int i = 0; i < args.length; i++) {
+            sum = sum + args[i];
+        }
+        return sum / full * 100;
+    }
+
+    /**
+     * It calculates the percentage. Here args is the array that is to be given
+     * example {1, 2, 3, 4, 5} sum of data given in this array is calculated and
+     * stored in a variable <b>sum</b>. Here full is the array containing the
+     * full value of each element in args array.
+     *
+     * @param args The numbers of which the percentage is to be calculated
+     * @param full The total sum of full from which the percentage is to be
+     * calculated
+     * @return Percentage
+     */
+    public static double caluclatePercentage(double[] full, double[] args) {
+        double sum1 = 0, sum2 = 0;
+        for (int i = 0; i < args.length; i++) {
+            sum1 = sum1 + args[i];
+        }
+        for (int i = 0; i < full.length; i++) {
+            sum2 = sum2 + full[i];
+        }
+        return sum1 / sum2 * 100;
+    }
+
+    /**
+     * It calculates the percentage. Here total is the sum of array that
+     * calculated by the user or programmer and given as parameter Here full is
+     * the total sum of which percentage is to be calculated <u>sum</u> /
+     * <u>full</u> * 100
+     *
+     * @param total sum of all elements
+     * @param full The total sum of full from which the percentage is to be
+     * calculated
+     * @return Average
+     */
+    public static double calculatePercentage(double total, double full) {
+        return total / full * 100;
+    }
+
+    /**
+     * It calculates the average here args is an array. The elements of args are
+     * those on among which average is calculated. Average is calculated on the
+     * basis of number of elements presents in the given array.
+     *
+     * @param args Elements
+     * @return Average
+     */
+    public static double calculateAverage(double... args) {
+        double sum = 0;
+        for (int i = 0; i < args.length; i++) {
+            sum = sum + args[i];
+        }
+        return sum / args.length;
+    }
+
+    /**
+     * It returns the average. Here <b>total</b> is the sum of array of data
+     * given by the user or programmer. Here <b>noOfElements</b> is the total
+     * number of elements in the array of which average is to be calculated.
+     *
+     * @param total Sum of all the elements
+     * @param noOfElements Total number of elements
+     * @return total / noOfElements
+     */
+    public static double calculateAverage(double total, int noOfElements) {
+        return total / noOfElements;
+    }
+
+    /**
+     * Calculates sum of arguments
+     *
+     * @param s the numbers of which the sum is to be calculated
+     * @return the sum of numbers passed in the argument
+     */
+    public static byte sum(byte... s) {
+        byte sum = 0;
+        for (byte d : s) {
+            sum += d;
+        }
+        return sum;
+    }
+
+    /**
+     * Calculates sum of arguments
+     *
+     * @param s the numbers of which the sum is to be calculated
+     * @return the sum of numbers passed in the argument
+     */
+    public static short sum(short... s) {
+        short sum = 0;
+        for (short d : s) {
+            sum += d;
+        }
+        return sum;
+    }
+
+    /**
+     * Calculates sum of arguments
+     *
+     * @param s the numbers of which the sum is to be calculated
+     * @return the sum of numbers passed in the argument
+     */
+    public static int sum(int... s) {
+        int sum = 0;
+        for (int d : s) {
+            sum += d;
+        }
+        return sum;
+    }
+
+    /**
+     * Calculates sum of arguments
+     *
+     * @param s the numbers of which the sum is to be calculated
+     * @return the sum of numbers passed in the argument
+     */
+    public static long sum(long... s) {
+        long sum = 0;
+        for (long d : s) {
+            sum += d;
+        }
+        return sum;
+    }
+
+    /**
+     * Calculates sum of arguments
+     *
+     * @param s the numbers of which the sum is to be calculated
+     * @return the sum of numbers passed in the argument
+     */
+    public static float sum(float... s) {
+        float sum = 0;
+        for (float d : s) {
+            sum += d;
+        }
+        return sum;
+    }
+
+    /**
+     * Calculates sum of arguments
+     *
+     * @param s the numbers of which the sum is to be calculated
+     * @return the sum of numbers passed in the argument
+     */
+    public static double sum(double... s) {
+        double sum = 0;
+        for (double d : s) {
+            sum += d;
+        }
+        return sum;
+    }
+
+    public static String toWords(int num) {
+        String[] s = {"", "thousand", "million", "billion", "trillion", "quadrillion", "quintillion", "sextillion",
+            "septillion", "octillion", "nonillion", "decillion"};
+        return "";
     }
 }

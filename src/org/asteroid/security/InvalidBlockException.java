@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
- * 
- * Copyright (c) 2022 by Asteroid Softwares
+ *
+ * Copyright (c) 2023 by Imtiyaz Allam
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,20 +20,30 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-
 package org.asteroid.security;
 
 /**
  * Raised when the given block is not supported
  *
- * @author Asteroid Softwares
+ * @author Imtiyaz Allam
  */
 public class InvalidBlockException extends RuntimeException {
 
     /**
-     * Creates an instance of <code>InvalidBlockException</code> class
+     * Creates an instance of <code>InvalidBlockException</code> class with
+     * default detail message
      */
     public InvalidBlockException() {
         super("The given size of block is not valid");
+    }
+
+    /**
+     * Creates an instance of <code>InvalidBlockException</code> class with
+     * specified detail message
+     *
+     * @param msg detail message
+     */
+    public InvalidBlockException(String msg) {
+        super(msg);
     }
 }

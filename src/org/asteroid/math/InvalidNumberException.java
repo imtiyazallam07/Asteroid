@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
- * 
- * Copyright (c) 2022 by Asteroid Softwares
+ *
+ * Copyright (c) 2023 by Imtiyaz Allam
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,19 +20,30 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-
-package org.asteroid;
+package org.asteroid.math;
 
 /**
- * Raised when there is an invalid string size 
- * 
- * @author Asteroid Softwares
+ * Raised when an invalid number is passed as argument
+ *
+ * @author Imtiyaz Allam
  */
-public class MulticharException extends RuntimeException{
+public class InvalidNumberException extends RuntimeException {
+
     /**
-     * Creates an instance of <code>MulticharException</code>
+     * Creates a new instance of <code>InvalidNumberException</code> with
+     * default detail message.
      */
-    public MulticharException(){
-        super("It must contain only a single char. Neither more than one nor even 0");
+    public InvalidNumberException() {
+        super("The number is not valid.\nIt must be a non-zero and non-negetive value.");
+    }
+
+    /**
+     * Constructs an instance of <code>InvalidNumberException</code> with the
+     * specified detail message.
+     *
+     * @param msg detail message.
+     */
+    public InvalidNumberException(String msg) {
+        super(msg);
     }
 }

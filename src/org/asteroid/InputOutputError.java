@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
- * 
- * Copyright (c) 2022 by Asteroid Softwares
+ *
+ * Copyright (c) 2023 by Imtiyaz Allam
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,21 +20,30 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-
 package org.asteroid;
 
 /**
  * raised when any input or output error
  *
- * @author Asteroid Softwares
+ * @author Imtiyaz Allam
  */
 public class InputOutputError extends RuntimeException {
 
     /**
-     * Creates a new instance of <code>InputOutputError</code> without detail
-     * message.
+     * Creates a new instance of <code>InputOutputError</code> with default
+     * detail message.
      */
     public InputOutputError() {
         super("Error occured in reading/writing file");
+    }
+
+    /**
+     * Creates a new instance of <code>InputOutputError</code> with a specified
+     * detail message
+     *
+     * @param msg detail message
+     */
+    public InputOutputError(String msg) {
+        super(msg);
     }
 }

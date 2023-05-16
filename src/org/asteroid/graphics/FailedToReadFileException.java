@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  *
- * Copyright (c) 2022 by Asteroid Softwares
+ * Copyright (c) 2023 by Imtiyaz Allam
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,15 +23,16 @@
 package org.asteroid.graphics;
 
 /**
- * Raised when the <code>org.asteroid.graphics.Dialog.showImage(...)</code> method fails to read the image file 
- * 
- * @author Asteroid Softwares
+ * Raised when the <code>org.asteroid.graphics.Dialog.showImage(...)</code>
+ * method fails to read the image file
+ *
+ * @author Imtiyaz Allam
  */
-public class FailedToReadFileException extends RuntimeException{
+public class FailedToReadFileException extends RuntimeException {
 
     /**
-     * Creates a new instance of <code>FailedToReadFileException</code> without
-     * detail message.
+     * Creates a new instance of <code>FailedToReadFileException</code> with
+     * default detail message.
      */
     public FailedToReadFileException() {
         super("Unable to read the image file");

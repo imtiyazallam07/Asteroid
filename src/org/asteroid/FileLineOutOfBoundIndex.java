@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  *
- * Copyright (c) 2022 by Asteroid Softwares
+ * Copyright (c) 2023 by Imtiyaz Allam
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,14 +24,14 @@ package org.asteroid;
 
 /**
  * Raised when the file has less number of lines than specified index
- * 
- * @author Asteroid Softwares
+ *
+ * @author Imtiyaz Allam
  */
 public class FileLineOutOfBoundIndex extends RuntimeException {
 
     /**
-     * Creates a new instance of <code>FileLineOutOfBoundIndex</code> without
-     * detail message.
+     * Creates a new instance of <code>FileLineOutOfBoundIndex</code> with
+     * default detail message.
      */
     public FileLineOutOfBoundIndex() {
         super("Given index is greater that number of line");
@@ -41,7 +41,7 @@ public class FileLineOutOfBoundIndex extends RuntimeException {
      * Constructs an instance of <code>FileLineOutOfBoundIndex</code> with the
      * specified detail message.
      *
-     * @param msg the detail message.
+     * @param msg detail message.
      */
     public FileLineOutOfBoundIndex(String msg) {
         super(msg);

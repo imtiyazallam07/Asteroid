@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
- * 
- * Copyright (c) 2022 by Asteroid Softwares
+ *
+ * Copyright (c) 2023 by Imtiyaz Allam
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,7 +20,6 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-
 package org.asteroid.security;
 
 import java.io.UnsupportedEncodingException;
@@ -38,7 +37,7 @@ import javax.crypto.spec.SecretKeySpec;
 /**
  * It helps in encryption and decryption based of Advanced Encryption Standard
  *
- * @author Asteroid Softwares
+ * @author Imtiyaz Allam
  */
 public class AdvancedEncryptionStandard {
 
@@ -99,7 +98,7 @@ public class AdvancedEncryptionStandard {
      *
      * @param encryptedData Data that is to be encrypted
      * @param code key using which data is to be decrypt
-     * @return Decrypted data 
+     * @return Decrypted data
      */
     public static String decrypt(String encryptedData, String code) {
         try {

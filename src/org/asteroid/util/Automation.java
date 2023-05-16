@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  *
- * Copyright (c) 2022 by Asteroid Softwares
+ * Copyright (c) 2023 by Imtiyaz Allam
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -33,7 +33,7 @@ import java.util.List;
 
 /**
  *
- * @author Asteroid Softwares
+ * @author Imtiyaz Allam
  */
 public class Automation {
 
@@ -230,6 +230,9 @@ public class Automation {
 
     private List<Integer> lastPressed = new ArrayList<>();
 
+    /**
+     * Creates an instance of <code>org.asteroid.util.Automation</code> class
+     */
     public Automation() {
         try {
             robot = new Robot();
@@ -238,6 +241,11 @@ public class Automation {
 
     }
 
+    /**
+     * Performs a virtual key press and release
+     *
+     * @param vk Virtual key code
+     */
     public void pressAndRelease(int vk) {
         if (!Automation.isValidVK(vk)) {
             throw new InvalidVirtualKeyException();
@@ -246,6 +254,12 @@ public class Automation {
         robot.keyRelease(vk);
     }
 
+    /**
+     * Performs a virtual key press and release
+     *
+     * @param vk Virtual key code
+     * @param pressDuration time duration between key press and release
+     */
     public void pressAndRelease(int vk, int pressDuration) {
         if (!Automation.isValidVK(vk)) {
             throw new InvalidVirtualKeyException();
@@ -259,27 +273,48 @@ public class Automation {
         robot.keyRelease(vk);
     }
 
+    /**
+     * Performs a virtual key press
+     *
+     * @param vk Virtual key code
+     */
     public void press(int vk) {
         robot.keyPress(vk);
         lastPressed.add(vk);
     }
 
+    /**
+     * Performs a virtual key release
+     *
+     * @param vk Virtual key code
+     */
     public void release(int vk) {
         robot.keyRelease(vk);
         lastPressed.remove(lastPressed.lastIndexOf(vk));
     }
 
+    /**
+     * Performs a virtual key press and release of last pressed key
+     */
     public void release() {
         robot.keyRelease(lastPressed.get(lastPressed.size() - 1));
         lastPressed.remove(lastPressed.size() - 1);
 
     }
 
+    /**
+     * Performs a virtual key press and release of enter key
+     */
     public void pressAndReleaseEnter() {
         robot.keyPress(Automation.VK_ENTER);
         robot.keyPress(Automation.VK_ENTER);
     }
 
+    /**
+     * Performs a virtual key press and release of enter key
+     *
+     * @param pressDuration time duration between key press and release
+     */
     public void pressAndReleaseEnter(int pressDuration) {
         robot.keyPress(Automation.VK_ENTER);
         try {
@@ -290,10 +325,21 @@ public class Automation {
         robot.keyPress(Automation.VK_ENTER);
     }
 
+    /**
+     * Performs a virtual mouse wheel rotation
+     *
+     * @param rotateWheelAmt wheel rotation amount
+     */
     public void rotateMouseWheel(int rotateWheelAmt) {
         robot.mouseWheel(rotateWheelAmt);
     }
 
+    /**
+     * Performs a virtual mouse wheel rotation
+     *
+     * @param rotateWheelAmt wheel rotation amount
+     * @param interval Time duration between two successive mouse wheel rotation
+     */
     public void rotateMouseWheel(int rotateWheelAmt, long interval) {
         for (int i = 0; i < rotateWheelAmt; i++) {
             if (i != 0)
@@ -307,21 +353,35 @@ public class Automation {
         }
     }
 
+    /**
+     * Performs a virtual mouse left button press
+     */
     public void pressAndReleaseLeftMouseButton() {
         robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
     }
 
+    /**
+     * Performs a virtual mouse middle button press
+     */
     public void pressAndReleaseMiddleMouseButton() {
         robot.mousePress(InputEvent.BUTTON2_DOWN_MASK);
         robot.mouseRelease(InputEvent.BUTTON2_DOWN_MASK);
     }
 
+    /**
+     * Performs a virtual mouse right button press
+     */
     public void pressAndReleaseRightMouseButton() {
         robot.mousePress(InputEvent.BUTTON3_DOWN_MASK);
         robot.mouseRelease(InputEvent.BUTTON3_DOWN_MASK);
     }
 
+    /**
+     * Performs a virtual mouse left button press
+     *
+     * @param duration Time duration between button press and release
+     */
     public void pressAndReleaseLeftMouseButton(long duration) {
         robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         try {
@@ -332,6 +392,11 @@ public class Automation {
         robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
     }
 
+    /**
+     * Performs a virtual mouse left button press
+     *
+     * @param duration Time duration between button press and release
+     */
     public void pressAndReleaseMiddleMouseButton(long duration) {
         robot.mousePress(InputEvent.BUTTON2_DOWN_MASK);
         try {
@@ -342,6 +407,11 @@ public class Automation {
         robot.mouseRelease(InputEvent.BUTTON2_DOWN_MASK);
     }
 
+    /**
+     * Performs a virtual mouse left button press
+     *
+     * @param duration Time duration between between press and release
+     */
     public void pressAndReleaseRightMouseButton(long duration) {
         robot.mousePress(InputEvent.BUTTON3_DOWN_MASK);
         try {
@@ -352,10 +422,24 @@ public class Automation {
         robot.mouseRelease(InputEvent.BUTTON3_DOWN_MASK);
     }
 
+    /**
+     * Move the mouse pointer to a particular position
+     *
+     * @param x X axis
+     * @param y Y axis
+     */
     public void placeMouseCursorAt(int x, int y) {
         robot.mouseMove(x, y);
     }
 
+    /**
+     * Move mouse pointer from the current position. Passing a negative value in
+     * <code>x</code> moves the pointer towards left and passing a negative
+     * value in <code>y</code> moves a pointer towards top
+     *
+     * @param x X axis
+     * @param y Y axis
+     */
     public void moveMouseCursorBy(int x, int y) {
         Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
         if (MouseInfo.getPointerInfo().getLocation().x + x > size.getWidth() || MouseInfo.getPointerInfo().getLocation().x + y > size.getHeight()) {
@@ -364,6 +448,12 @@ public class Automation {
         robot.mouseMove(MouseInfo.getPointerInfo().getLocation().x + x, MouseInfo.getPointerInfo().getLocation().y + y);
     }
 
+    /**
+     * Checks if the value is a valid virtual key code
+     *
+     * @param vk Code to test if the code is valid or not
+     * @return <code>true</code> if the code is valid else <code>false</code>
+     */
     public static boolean isValidVK(int vk) {
         switch (vk) {
             case VK_ENTER:
@@ -558,8 +648,14 @@ public class Automation {
         return false;
     }
 
+    /**
+     * Gets the virtual key code of a given character
+     *
+     * @param ch character of which virtual key code is to be found
+     * @return Virtual key code
+     */
     private static int getVK(char ch) {
-        switch (ch) {
+        switch (Character.toLowerCase(ch)) {
             case 'a':
                 return VK_A;
             case 'b':
@@ -658,11 +754,21 @@ public class Automation {
                 return VK_SLASH;
             case '`':
                 return VK_BACK_QUOTE;
+            case ' ':
+                return VK_SPACE;
+            case '*':
+                return VK_ASTERISK;
             default:
                 throw new InvalidCharacterException("Invalid character passed: " + ch + ".");
         }
     }
 
+    /**
+     * Gets the virtual key code of a given character
+     *
+     * @param key character of which virtual key code is to be found
+     * @return Virtual key code
+     */
     private static int getVK(String key) {
         switch (key) {
             case "ENTER":
@@ -1046,39 +1152,81 @@ public class Automation {
         }
     }
 
+    /**
+     * Type the given text
+     *
+     * @param s text to type
+     */
     public void type(String s) {
         type(s, 0);
     }
 
+    /**
+     * Type the given text
+     *
+     * @param cha text to type
+     */
     public void type(char[] cha) {
         type(new String(cha));
     }
 
+    /**
+     * Type the given text
+     *
+     * @param keys text to type
+     */
     public void type(String[] keys) {
         type(keys, 0);
     }
 
+    /**
+     * Type the given text
+     *
+     * @param vk Virtual key code to type
+     */
     public void type(int[] vk) {
         type(vk, 0);
     }
 
+    /**
+     * Type the given text
+     *
+     * @param s text to type
+     * @param interval time duration between two successive key press and
+     * release
+     */
     public void type(String s, long interval) {
         s = s.toLowerCase();
         for (int i = 0; i < s.length(); i++) {
-            if (i != 0)
+            if (i != 0) {
                 try {
-                Thread.sleep(interval);
-            } catch (InterruptedException ex) {
-                throw new FailedToFreezeException();
+                    Thread.sleep(interval);
+                } catch (InterruptedException ex) {
+                    throw new FailedToFreezeException();
+                }
             }
             pressAndRelease(Automation.getVK(s.charAt(i)));
         }
     }
 
+    /**
+     * Type the given text
+     *
+     * @param cha text to type
+     * @param interval time duration between two successive key press and
+     * release
+     */
     public void type(char[] cha, long interval) {
         type(new String(cha), interval);
     }
 
+    /**
+     * Type the given text
+     *
+     * @param keys text to type
+     * @param interval time duration between two successive key press and
+     * release
+     */
     public void type(String[] keys, long interval) {
         for (String key : keys) {
             try {
@@ -1090,6 +1238,13 @@ public class Automation {
         }
     }
 
+    /**
+     * Type the given text
+     *
+     * @param vk Virtual key code to type
+     * @param interval time duration between two successive key press and
+     * release
+     */
     public void type(int[] vk, long interval) {
         for (int i : vk) {
             try {

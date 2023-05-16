@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  *
- * Copyright (c) 2022 by Asteroid Softwares
+ * Copyright (c) 2023 by Imtiyaz Allam
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,7 +28,7 @@ import java.util.List;
 /**
  * It helps in tasks related to string and character
  *
- * @author Asteroid Softwares
+ * @author Imtiyaz Allam
  */
 public final class Text {
 
@@ -66,6 +66,101 @@ public final class Text {
     }
 
     /**
+     * 
+     * 
+     * @param s
+     * @return 
+     */
+    public static String toKebabCase(String s) {
+        if(doesContainsSpecialChar(s))
+            throw new InvalidCharacterFoundException();
+        return s.toLowerCase().replace(' ', '-');
+    }
+
+    public static String toCamelCase(String s) {
+        if(doesContainsSpecialChar(s))
+            throw new InvalidCharacterFoundException();
+        return toggleCaseAt(capitaliseEachWord(s), 0).replace(" ", "");
+    }
+
+    public static String toSnakeCase(String s) {
+        if(doesContainsSpecialChar(s))
+            throw new InvalidCharacterFoundException();
+        return s.toLowerCase().replace(' ', '_');
+    }
+
+    public static String toUpperSnakeCase(String s) {
+        if(doesContainsSpecialChar(s))
+            throw new InvalidCharacterFoundException();
+        return s.toUpperCase().replace(' ', '_');
+    }
+
+    public static String toPascalCase(String s) {
+        if(doesContainsSpecialChar(s))
+            throw new InvalidCharacterFoundException();
+        return capitaliseEachWord(s).replace(" ", "");
+    }
+
+    public static String toggleCaseAt(String s, int index) {
+        if(index < 0)
+            index = s.length() - index;
+        if(index < 0)
+            throw new StringIndexOutOfBoundsException("Invalid index");
+        char[] str = s.toCharArray();
+        for (int i = 0; i < str.length; i++) {
+            if (i == index) {
+                str[i] = Character.isUpperCase(str[i])
+                        ? Character.toLowerCase(str[i])
+                        : Character.toUpperCase(str[i]);
+            }
+        }
+        return String.valueOf(str);
+    }
+    
+    /**
+     * Check if the given string contains any special character
+     * 
+     * @param s string to check if it contains any special character
+     * @return {@code true} if it contains special character else {@code false}
+     */
+    public static boolean doesContainsSpecialChar(String s) {
+        for(int i = 0; i < s.length(); i++){
+            if(Character.isAlphabetic(s.charAt(i)) || Character.isDigit(s.charAt(i)) || Character.isWhitespace(s.charAt(i)))
+                continue;
+            return true;
+        }
+        return false;
+    }
+    
+    /**
+     * Replace all special characters in the string with the given character
+     * 
+     * @param str String with special characters
+     * @param ch Character to replace with special character
+     * @return String with special character replaced with given character
+     */
+    public static String replaceSpecialCharacters(String str, char ch) {
+        char[] a = str.toCharArray();
+        for (int i = 0; i < a.length; i++) {
+            if(!Character.isLetterOrDigit(a[i]))
+                a[i] = ch;
+        }
+        return new String(a);
+    }
+    
+    /**
+     * Replace all special characters in the string with the given string. 
+     * 
+     * @param str1 String with special characters
+     * @param str2 String to replace with special character
+     * @return String with special character replaced with given string
+     */
+    public static String replaceSpecialCharacters(String str1, String str2) {
+        str1= replaceSpecialCharacters(str1, (char) 1);
+        return str1.replace(Character.toString((char) 1), str2);
+    }
+
+    /**
      * checks if the string is empty or null
      *
      * @param str Value on which operation is to be performed
@@ -73,10 +168,11 @@ public final class Text {
      * <code>null</code> or empty
      */
     public static boolean isEmpty(String str) {
-        if (str == null)
+        if (str == null) {
             return true;
-        else
+        } else {
             return str.equals("");
+        }
     }
 
     /**
@@ -133,8 +229,9 @@ public final class Text {
     public static boolean isPalindrome(String str) {
         int i = 0, j = str.length() - 1;
         while (i < j) {
-            if (str.charAt(i) != str.charAt(j))
+            if (str.charAt(i) != str.charAt(j)) {
                 return false;
+            }
             i++;
             j--;
         }
@@ -149,11 +246,11 @@ public final class Text {
      */
     public static String toggleCase(String s) {
         char[] str = s.toCharArray();
-        for (int i = 0; i < str.length; i++)
-            if (str[i] >= 'A' && str[i] <= 'Z')
-                str[i] = (char) (str[i] + 'a' - 'A');
-            else if (str[i] >= 'a' && str[i] <= 'z')
-                str[i] = (char) (str[i] + 'A' - 'a');
+        for (int i = 0; i < str.length; i++) {
+            str[i] = Character.isUpperCase(str[i])
+                    ? Character.toLowerCase(str[i])
+                    : Character.toUpperCase(str[i]);
+        }
         return String.valueOf(str);
     }
 
@@ -163,15 +260,23 @@ public final class Text {
      * @param str Value on which operation is to be performed
      * @return Value of the variable <code>str</code> in ASCII
      */
-    public static String toAscii(String str) {
+    public static byte[] toAscii(String str) {
         byte[] bytes = str.getBytes(java.nio.charset.StandardCharsets.US_ASCII);
-        System.out.println(bytes[0]);
-        java.util.List<Integer> result = new java.util.ArrayList<>();
-        for (byte aByte : bytes) {
-            int ascii = (int) aByte;
-            result.add(ascii);
-        }
-        return (result.toString());
+        return bytes;
+    }
+    
+    /**
+     * Converts the given string into binary. Each character in the string is present separately in the array
+     * 
+     * @param str String whose character are to be converted to binary
+     * @return Binary representation of each character of string in an array
+     */
+    public static String[] toBinary(String str) {
+        byte[] bytes = str.getBytes(java.nio.charset.StandardCharsets.US_ASCII);
+        String[] bin = new String[bytes.length];
+        for(int i = 0; i < bytes.length; i++)
+            bin[i] = Integer.toBinaryString(bytes[i]);
+        return bin;
     }
 
     /**
@@ -228,10 +333,11 @@ public final class Text {
      * consonant
      */
     public static boolean isConsonant(char a) {
-        if (isSpecialChar(a))
+        if (isSpecialChar(a)) {
             return !isVowel(a);
-        else
+        } else {
             return false;
+        }
     }
 
     /**
@@ -243,7 +349,6 @@ public final class Text {
      */
     public static boolean isSpecialChar(char a) {
         a = (Character.toString(a).toLowerCase()).charAt(0);
-        System.out.println(a);
         return !((a > 'a' && a < 'z') || (a > '0' && a < '9'));
 
     }
@@ -257,8 +362,9 @@ public final class Text {
     public static String reverseText(String str) {
         byte[] strAsByteArray = str.getBytes();
         byte[] result = new byte[strAsByteArray.length];
-        for (int i = 0; i < strAsByteArray.length; i++)
+        for (int i = 0; i < strAsByteArray.length; i++) {
             result[i] = strAsByteArray[strAsByteArray.length - i - 1];
+        }
         return (new String(result));
     }
 
@@ -383,88 +489,6 @@ public final class Text {
     }
 
     /**
-     * It prints the array. If an array contains [1, 2, 3], It prints [1, 2, 3]
-     *
-     * @param array Array that is to be printed
-     */
-    public static void arrayPrint(String[] array) {
-        int len = array.length;
-        if (len == 0)
-            return;
-        System.out.print("[" + array[0]);
-        for (int i = 1; i < len; i++)
-            System.out.print(", " + array[i]);
-        System.out.println("]");
-    }
-
-    /**
-     * It print the element of the array line by line
-     *
-     * @param array Array that is to be printed
-     */
-    public static void arrayPrintln(String[] array) {
-        int len = array.length;
-        if (len == 0)
-            return;
-        for (int i = 0; i < len; i++)
-            System.out.println(array[i]);
-    }
-
-    /**
-     * It print the element of the array in one line separated by white space
-     *
-     * @param array Array that is to be printed
-     */
-    public static void arrayPrintf(String[] array) {
-        int len = array.length;
-        if (len == 0)
-            return;
-        for (int i = 0; i < len; i++)
-            System.out.print(array[i] + " ");
-        System.out.println();
-    }
-
-    /**
-     * It print the element of the array in one line separated by given
-     * separator
-     *
-     * @param array Array that is to be printed
-     * @param separator The value by which 2 elements of the array are separated
-     * while printing
-     */
-    public static void arrayPrintf(String[] array, String separator) {
-        int len = array.length;
-        if (len == 0)
-            return;
-        for (int i = 0; i < len; i++)
-            if (i < len - 1)
-                System.out.print(array[i] + separator);
-            else
-                System.out.println(array[i]);
-        System.out.println();
-    }
-
-    /**
-     * It print the element of the array in one line separated by given
-     * separator
-     *
-     * @param array Array that is to be printed
-     * @param separator The value by which 2 elements of the array are separated
-     * while printing
-     */
-    public static void arrayPrintf(String[] array, char separator) {
-        int len = array.length;
-        if (len == 0)
-            return;
-        for (int i = 0; i < len; i++)
-            if (i < len - 1)
-                System.out.print(array[i] + separator);
-            else
-                System.out.println(array[i]);
-        System.out.println();
-    }
-
-    /**
      * Collects all the indices of a given character in the given string. If the
      * given character does not exists in the given string the codes return an
      * empty array.
@@ -477,20 +501,23 @@ public final class Text {
     public static int[] getIndicesOf(String text, char ch) {
         List<Integer> indices = new ArrayList();
         char[] string = text.toCharArray();
-        for (int i = 0; i < string.length; i++)
-            if (ch == string[i])
+        for (int i = 0; i < string.length; i++) {
+            if (ch == string[i]) {
                 indices.add(i);
+            }
+        }
         Object[] objArray = indices.toArray();
         int length = objArray.length;
         int intArray[] = new int[length];
-        for (int i = 0; i < length; i++)
+        for (int i = 0; i < length; i++) {
             intArray[i] = (int) objArray[i];
+        }
         return intArray;
     }
 
     /**
-     * replace words in a sentence
-     * 
+     * Replace words in a sentence (Case sensitive)
+     *
      * @param sentence sentence in which word is to be replaced
      * @param word old word
      * @param newWord new word
@@ -501,91 +528,78 @@ public final class Text {
     }
 
     /**
-     * counts the number of words
-     * 
+     * Counts the number of words
+     *
      * @param sentence sentence in which word is to be counted
      * @return number of words
      */
     public static int countWords(String sentence) {
-        sentence = removeExtraSpace(sentence);
-        int count = 1;
-        for (int i = 0; i < sentence.length(); i++)
-            if (sentence.charAt(i) == ' ')
-                count++;
-        return count;
+        return getWords(sentence).length;
     }
 
     /**
-     * trims and remove multiple space
-     * 
+     * Trims and remove multiple space
+     *
      * @param str string on which operation is performed
-     * @return trimmed and removed extra spaced string 
+     * @return trimmed and removed extra spaced string
      */
     public static String removeExtraSpace(String str) {
         str = str.trim();
-        while (str.contains("  ")){
+        while (str.contains("  ")) {
             str = str.replace("  ", " ");
         }
         return str;
     }
-    
+
     /**
-     * collects words in the sentence
-     * 
+     * Collects words in the sentence
+     *
      * @param sentence string from which words is to be collected
      * @return words collected from the sentence
      */
     public static String[] getWords(String sentence) {
-        sentence = removeExtraSpace(sentence) + " ";
-        String[] words = new String[countWords(sentence)];
-        int count = 0;
-        String word = "";
-        for (int i = 0; i < sentence.length(); i++) {
-            char ch = sentence.charAt(i);
-            if (ch == ' '){
-                words[count] = word;
-                count++;
-                word = "";
-            } else {
-                word += ch;
-            }
-                
-        }
-        return words;
+        sentence = removeExtraSpace(sentence);
+        return (replaceSpecialCharacters(sentence, ' ').split(" "));
     }
+
     /**
-     * checks if the array is sorted in ascending or not
+     * Checks if the array is sorted in ascending or not
      *
      * @param arr array to check if it is sorted
      * @return returns true if the array is sorted in ascending order
      */
     public static boolean isSorted(char[] arr) {
-        if(arr.length < 2)
+        if (arr.length < 2) {
             return true;
+        }
         char last = arr[0];
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i] < last)
+            if (arr[i] < last) {
                 return false;
+            }
             last = arr[i];
         }
         return true;
     }
-    
+
     /**
      * checks if the array is sorted in ascending or not ignoring case
      *
      * @param arr array to check if it is sorted
-     * @return returns true if the array is sorted in ascending order ignoring case
+     * @return returns true if the array is sorted in ascending order ignoring
+     * case
      */
     public static boolean isSortedIgnoreCase(char[] arr) {
-        if(arr.length < 2)
+        if (arr.length < 2) {
             return true;
+        }
         char last = Character.toLowerCase(arr[0]);
         char current;
         for (int i = 0; i < arr.length; i++) {
             current = Character.toLowerCase(arr[i]);
-            if (current < last)
+            if (current < last) {
                 return false;
+            }
             last = arr[i];
         }
         return true;
@@ -598,37 +612,42 @@ public final class Text {
      * @return returns true if the array is sorted in descending order
      */
     public static boolean isSortedDecending(char[] arr) {
-        if(arr.length < 2)
+        if (arr.length < 2) {
             return true;
+        }
         char last = arr[0];
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i] > last)
+            if (arr[i] > last) {
                 return false;
+            }
             last = arr[i];
         }
         return true;
     }
-    
+
     /**
      * checks if the array is sorted in descending or not ignoring case
      *
      * @param arr array to check if it is sorted
-     * @return returns true if the array is sorted in descending order ignoring case
+     * @return returns true if the array is sorted in descending order ignoring
+     * case
      */
     public static boolean isSortedDecendingIgnoreCase(char[] arr) {
-        if(arr.length < 2)
+        if (arr.length < 2) {
             return true;
+        }
         char last = Character.toLowerCase(arr[0]);
         char current;
         for (int i = 0; i < arr.length; i++) {
             current = Character.toLowerCase(arr[i]);
-            if (current < last)
+            if (current < last) {
                 return false;
+            }
             last = arr[i];
         }
         return true;
     }
-    
+
     /**
      * checks if the array is sorted in ascending or not
      *
@@ -636,32 +655,37 @@ public final class Text {
      * @return returns true if the array is sorted in ascending order
      */
     public static boolean isSorted(Character[] arr) {
-        if(arr.length < 2)
+        if (arr.length < 2) {
             return true;
+        }
         char last = arr[0];
         for (Character arr1 : arr) {
-            if (arr1 < last)
+            if (arr1 < last) {
                 return false;
+            }
             last = arr1;
         }
         return true;
     }
-    
+
     /**
      * checks if the array is sorted in ascending or not ignoring case
      *
      * @param arr array to check if it is sorted
-     * @return returns true if the array is sorted in ascending order ignoring case
+     * @return returns true if the array is sorted in ascending order ignoring
+     * case
      */
     public static boolean isSortedIgnoreCase(Character[] arr) {
-        if(arr.length < 2)
+        if (arr.length < 2) {
             return true;
+        }
         char last = Character.toLowerCase(arr[0]);
         char current;
         for (Character arr1 : arr) {
             current = Character.toLowerCase(arr1);
-            if (current < last)
+            if (current < last) {
                 return false;
+            }
             last = arr1;
         }
         return true;
@@ -674,32 +698,37 @@ public final class Text {
      * @return returns true if the array is sorted in descending order
      */
     public static boolean isSortedDecending(Character[] arr) {
-        if(arr.length < 2)
+        if (arr.length < 2) {
             return true;
+        }
         char last = arr[0];
         for (Character arr1 : arr) {
-            if (arr1 > last)
+            if (arr1 > last) {
                 return false;
+            }
             last = arr1;
         }
         return true;
     }
-    
+
     /**
      * checks if the array is sorted in descending or not ignoring case
      *
      * @param arr array to check if it is sorted
-     * @return returns true if the array is sorted in descending order ignoring case
+     * @return returns true if the array is sorted in descending order ignoring
+     * case
      */
     public static boolean isSortedDecendingIgnoreCase(Character[] arr) {
-        if(arr.length < 2)
+        if (arr.length < 2) {
             return true;
+        }
         char last = Character.toLowerCase(arr[0]);
         char current;
         for (Character arr1 : arr) {
             current = Character.toLowerCase(arr1);
-            if (current < last)
+            if (current < last) {
                 return false;
+            }
             last = arr1;
         }
         return true;
@@ -712,12 +741,14 @@ public final class Text {
      * @return returns true if the array is sorted in ascending order
      */
     public static boolean isSorted(String[] arr) {
-        if(arr.length < 2)
+        if (arr.length < 2) {
             return true;
+        }
         String last = arr[0];
         for (String arr1 : arr) {
-            if (arr1.compareTo(last) < 0)
+            if (arr1.compareTo(last) < 0) {
                 return false;
+            }
             last = arr1;
         }
         return true;
@@ -730,12 +761,14 @@ public final class Text {
      * @return returns true if the array is sorted in descending order
      */
     public static boolean isSortedDecending(String[] arr) {
-        if(arr.length < 2)
+        if (arr.length < 2) {
             return true;
+        }
         String last = arr[0];
         for (String arr1 : arr) {
-            if (arr1.compareTo(last) > 0)
+            if (arr1.compareTo(last) > 0) {
                 return false;
+            }
             last = arr1;
         }
         return true;
@@ -749,12 +782,14 @@ public final class Text {
      * case
      */
     public static boolean isSortedIgnoreCase(String[] arr) {
-        if(arr.length < 2)
+        if (arr.length < 2) {
             return true;
+        }
         String last = arr[0];
         for (String arr1 : arr) {
-            if (arr1.compareToIgnoreCase(last) < 0)
+            if (arr1.compareToIgnoreCase(last) < 0) {
                 return false;
+            }
             last = arr1;
         }
         return true;
@@ -768,12 +803,14 @@ public final class Text {
      * case
      */
     public static boolean isSortedDecendingIgnoreCase(String[] arr) {
-        if(arr.length < 2)
+        if (arr.length < 2) {
             return true;
+        }
         String last = arr[0];
         for (String arr1 : arr) {
-            if (arr1.compareToIgnoreCase(last) > 0)
+            if (arr1.compareToIgnoreCase(last) > 0) {
                 return false;
+            }
             last = arr1;
         }
         return true;

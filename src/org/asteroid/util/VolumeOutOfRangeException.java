@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
- * 
- * Copyright (c) 2022 by Asteroid Softwares
+ *
+ * Copyright (c) 2023 by Imtiyaz Allam
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,22 +20,39 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-
 package org.asteroid.util;
 
 /**
  *
- * @author Asteroid Softwares
+ * @author Imtiyaz Allam
  */
 public class VolumeOutOfRangeException extends RuntimeException {
 
     /**
-     * Creates an instance of <code>VolumeOutOfRangeException</code> class
+     * Creates an instance of <code>VolumeOutOfRangeException</code> class with
+     * default detail message
      *
      * @param a Volume passed as parameter to
      * <code>org.asteroid.util.Audio.setVolume(int)</code>
      */
     public VolumeOutOfRangeException(int a) {
         super("Invalid volume ranage. It should be within 0 and 100 but found: " + a);
+    }
+
+    /**
+     * Creates an instance of <code>VolumeOutOfRangeException</code> class
+     * without any detail message
+     */
+    public VolumeOutOfRangeException() {
+        super();
+    }
+
+    /**
+     * Creates an instance of <code>VolumeOutOfRangeException</code> class
+     *
+     * @param msg The message details
+     */
+    public VolumeOutOfRangeException(String msg) {
+        super(msg);
     }
 }

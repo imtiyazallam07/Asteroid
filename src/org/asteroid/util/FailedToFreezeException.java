@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
- * 
- * Copyright (c) 2022 by Asteroid Softwares
+ *
+ * Copyright (c) 2023 by Imtiyaz Allam
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,18 +20,18 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-
 package org.asteroid.util;
 
 /**
  * It is raised when the system fails to freeze the program
  *
- * @author Asteroid Softwares
+ * @author Imtiyaz Allam
  */
 public class FailedToFreezeException extends RuntimeException {
 
     /**
-     * Creates an instance of <code>FailedToFreezeException</code> class
+     * Creates an instance of <code>FailedToFreezeException</code> class with
+     * default detail message
      */
     public FailedToFreezeException() {
         super("Unable to freeze the program.");
@@ -41,7 +41,7 @@ public class FailedToFreezeException extends RuntimeException {
      * Creates an instance of <code>FailedToFreezeException</code> class with a
      * detailed message
      *
-     * @param msg detailed message
+     * @param msg detail message
      */
     public FailedToFreezeException(String msg) {
         super(msg);

@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * 
- * Copyright (c) 2022 by Asteroid Softwares
+ * Copyright (c) 2023 by Imtiyaz Allam
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -32,13 +32,13 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.sound.sampled.FloatControl;
 import org.asteroid.units.Time;
-import org.asteroid.maths.Numbers;
+import org.asteroid.math.Numbers;
 import java.io.FileNotFoundException;
 
 /**
  * It has methods to play wav audio file
  *
- * @author Asteroid Softwares
+ * @author Imtiyaz Allam
  */
 public class Audio {
 

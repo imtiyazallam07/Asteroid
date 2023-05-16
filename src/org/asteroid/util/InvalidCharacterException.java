@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  *
- * Copyright (c) 2022 by Asteroid Softwares
+ * Copyright (c) 2023 by Imtiyaz Allam
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,13 +25,13 @@ package org.asteroid.util;
 /**
  * Raised when an invalid character is passed to <code>org.asteroid.util.Automation.type(String)</code>
  * 
- * @author Asteroid Softwares
+ * @author Imtiyaz Allam
  */
 public class InvalidCharacterException extends RuntimeException {
 
     /**
-     * Creates a new instance of <code>InvalidCharacterException</code> without
-     * detail message.
+     * Creates a new instance of <code>InvalidCharacterException</code> with
+     * default detail message.
      */
     public InvalidCharacterException() {
         super("Invalid chracter passed.");
@@ -41,7 +41,7 @@ public class InvalidCharacterException extends RuntimeException {
      * Constructs an instance of <code>InvalidCharacterException</code> with the
      * specified detail message.
      *
-     * @param msg the detail message.
+     * @param msg detail message.
      */
     public InvalidCharacterException(String msg) {
         super(msg);

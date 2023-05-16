@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  *
- * Copyright (c) 2021 by Asteroid Softwares
+ * Copyright (c) 2021 by Imtiyaz Allam
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,13 +26,13 @@ package org.asteroid.util;
  * Raised when an invalid character is passed to
  * <code>org.asteroid.util.Automation.type(String)</code>
  *
- * @author Asteroid Softwares
+ * @author Imtiyaz Allam
  */
-public class InvalidKeyException extends RuntimeException{
+public class InvalidKeyException extends RuntimeException {
 
     /**
-     * Creates a new instance of <code>InvalidKeyException</code> without detail
-     * message.
+     * Creates a new instance of <code>InvalidKeyException</code> with default
+     * detail message.
      */
     public InvalidKeyException() {
         super("Invalid key passed.");
@@ -42,7 +42,7 @@ public class InvalidKeyException extends RuntimeException{
      * Constructs an instance of <code>InvalidKeyException</code> with the
      * specified detail message.
      *
-     * @param msg the detail message.
+     * @param msg detail message.
      */
     public InvalidKeyException(String msg) {
         super(msg);

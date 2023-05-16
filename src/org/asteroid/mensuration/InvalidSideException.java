@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * 
- * Copyright (c) 2022 by Asteroid Softwares
+ * Copyright (c) 2023 by Imtiyaz Allam
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,12 +26,12 @@ package org.asteroid.mensuration;
 /**
  * Raised when side or any length of the shape is 0 or less than 0
  *
- * @author Asteroid Softwares
+ * @author Imtiyaz Allam
  */
 public class InvalidSideException extends RuntimeException {
 
     /**
-     * Creates an instance of <code>InvalidSideException</code> class
+     * Creates an instance of <code>InvalidSideException</code> class with default detail message
      */
     public InvalidSideException() {
         super("You can't set a negetive parameter or a parameter equal to 0.");
@@ -39,7 +39,7 @@ public class InvalidSideException extends RuntimeException {
 
     /**
      * Creates an instance of <code>InvalidSideException</code> class with a
-     * specified reason
+     * specified detail message
      *
      * @param msg Detailed reason
      */

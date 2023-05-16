@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  *
- * Copyright (c) 2022 by Asteroid Softwares
+ * Copyright (c) 2023 by Imtiyaz Allam
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -35,7 +35,7 @@ import org.asteroid.Files;
 
 /**
  *
- * @author Asteroid Softwares
+ * @author Imtiyaz Allam
  */
 public class CSV {
 
@@ -128,8 +128,9 @@ public class CSV {
 
     //read files and also adds data in file to inString
     public void readFile() {
-        if (csvFile.getAbsolutePath().trim().equals(""))
+        if (csvFile.getAbsolutePath().trim().equals("")) {
             throw new NoFileSelectedException();
+        }
         try {
             FileReader fl = new FileReader(csvFile);
             BufferedReader bf = new BufferedReader(fl);
@@ -137,10 +138,12 @@ public class CSV {
             while (s != null) {
                 inString += s + '\n';
                 s = bf.readLine();
-                if (s == null)
+                if (s == null) {
                     break;
-                if (s.isEmpty())
+                }
+                if (s.isEmpty()) {
                     continue;
+                }
                 s = s.trim();
                 data.add(trimAll(Arrays.asList(s.split(","))));
             }
@@ -188,7 +191,7 @@ public class CSV {
      */
     public void save() {
         try {
-            try ( FileWriter f = new FileWriter(csvFile)) {
+            try (FileWriter f = new FileWriter(csvFile)) {
                 String res = "";
                 for (List<String> data1 : this.data) {
                     String line = data1.toString();
@@ -211,7 +214,7 @@ public class CSV {
      */
     public void save(String fileName) {
         try {
-            try ( FileWriter f = new FileWriter(new File(fileName))) {
+            try (FileWriter f = new FileWriter(new File(fileName))) {
                 String res = "";
                 for (List<String> data1 : this.data) {
                     String line = data1.toString();
@@ -234,7 +237,7 @@ public class CSV {
      */
     public void save(File file) {
         try {
-            try ( FileWriter f = new FileWriter(file)) {
+            try (FileWriter f = new FileWriter(file)) {
                 String res = "";
                 for (List<String> data1 : this.data) {
                     String line = data1.toString();
@@ -257,7 +260,7 @@ public class CSV {
      */
     public void save(Files file) {
         try {
-            try ( FileWriter f = new FileWriter(new File(file.getAbsolutePath()))) {
+            try (FileWriter f = new FileWriter(new File(file.getAbsolutePath()))) {
                 String res = "";
                 for (List<String> data1 : this.data) {
                     String line = data1.toString();
@@ -298,8 +301,9 @@ public class CSV {
     public void removeColumn(int columnIndex) {
         ArrayList<String> x;
         for (int i = 0; i < this.data.size(); i++) {
-            if (columnIndex >= this.data.get(i).size())
+            if (columnIndex >= this.data.get(i).size()) {
                 continue;
+            }
             x = new ArrayList(this.data.get(i));
             x.remove(columnIndex);
             this.data.set(i, x);
@@ -318,8 +322,9 @@ public class CSV {
 
     // trims all the String in the ArrayList <code>data</code>
     private List<String> trimAll(List<String> ls) {
-        for (int i = 0; i < ls.size(); i++)
+        for (int i = 0; i < ls.size(); i++) {
             ls.set(i, ls.get(i).trim());
+        }
         return ls;
     }
 

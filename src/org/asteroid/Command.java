@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * 
- * Copyright (c) 2022 by Asteroid Softwares
+ * Copyright (c) 2023 by Imtiyaz Allam
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -32,7 +32,7 @@ import org.asteroid.util.SystemUtility;
  * Gives the functionality of executing System shell commands. It can execute
  * command on Windows Operating System only.
  *
- * @author Asteroid Softwares
+ * @author Imtiyaz Allam
  */
 public class Command {
 

@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  *
- * Copyright (c) 2022 by Asteroid Softwares
+ * Copyright (c) 2023 by Imtiyaz Allam
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,8 +29,8 @@ package org.asteroid.util;
 public class NoFileSelectedException extends RuntimeException {
 
     /**
-     * Creates a new instance of <code>NoFileSelectedException</code> without
-     * detail message.
+     * Creates a new instance of <code>NoFileSelectedException</code> with
+     * default detail message.
      */
     public NoFileSelectedException() {
         super("File name is blank. \n\tCause: File address field is empty.");

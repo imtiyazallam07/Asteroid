@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  *
- * Copyright (c) 2022 by Asteroid Softwares
+ * Copyright (c) 2023 by Imtiyaz Allam
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,19 +20,30 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package org.asteroid.maths;
+package org.asteroid.math;
 
 /**
- * Raised when matrices are not of same size
+ * Raised when the length of given array of frequency doesn't matches the length
+ * of the class marks
  *
- * @author Asteroid Softwares
+ * @author Imtiyaz Allam
  */
-public class InvalidMatrixException extends RuntimeException {
+public class InvalidFrequencyException extends RuntimeException {
 
     /**
-     * Creates an instance of <code>InvalidMatrixException</code> class
+     * Creates a new instance of <code>InvalidFrequencyException</code> without
+     * detail message.
      */
-    public InvalidMatrixException() {
-        super("Both of the matrices should be of same side");
+    public InvalidFrequencyException() {
+    }
+
+    /**
+     * Constructs an instance of <code>InvalidFrequencyException</code> with the
+     * specified detail message.
+     *
+     * @param msg the detail message.
+     */
+    public InvalidFrequencyException(String msg) {
+        super(msg);
     }
 }

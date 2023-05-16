@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * 
- * Copyright (c) 2022 by Asteroid Softwares
+ * Copyright (c) 2023 by Imtiyaz Allam
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,17 +26,33 @@ package org.asteroid;
 /**
  * Raised when the specified string case is invalid
  *
- * @author Asteroid Softwares
+ * @author Imtiyaz Allam
  */
 public class UnknownStringCaseException extends RuntimeException {
 
     /**
-     * Creates an instance of <code>UnknownStringCaseException</code> class
+     * Creates an instance of <code>UnknownStringCaseException</code> class with default detail message
      *
      * @param i Value passed in parameter in
      * <code>inputString(String, byte)</code> method of <code>Input</code> class
      */
     public UnknownStringCaseException(byte i) {
         super("The case value " + i + " is invalid.");
+    }
+    
+    /**
+     * Creates an instance of <code>UnknownStringCaseException</code> class with specified detail message
+     * 
+     * @param msg detail message
+     */
+    public UnknownStringCaseException(String msg) {
+        super(msg);
+    }
+    
+    /**
+     * Creates an instance of <code>UnknownStringCaseException</code> class without detail message
+     */
+    public UnknownStringCaseException() {
+        super();
     }
 }

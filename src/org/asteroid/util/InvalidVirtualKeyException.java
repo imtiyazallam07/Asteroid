@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  *
- * Copyright (c) 2022 by Asteroid Softwares
+ * Copyright (c) 2023 by Imtiyaz Allam
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,13 +26,13 @@ package org.asteroid.util;
  * Raised when an invalid virtual key code is passed in methods of
  * <code>org.asteroid.util.Keyboard</code> class
  *
- * @author Asteroid Softwares
+ * @author Imtiyaz Allam
  */
 public class InvalidVirtualKeyException extends RuntimeException {
 
     /**
-     * Constructs an instance of <code>InvalidVirtualKeyException</code> with the
-     * specified detail message.
+     * Constructs an instance of <code>InvalidVirtualKeyException</code> with 
+     * default detail message.
      */
     public InvalidVirtualKeyException() {
         super("The given virtual key entered is not valid.");

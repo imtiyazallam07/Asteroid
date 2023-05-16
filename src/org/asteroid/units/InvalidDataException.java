@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
- * 
- * Copyright (c) 2022 by Asteroid Softwares
+ *
+ * Copyright (c) 2023 by Imtiyaz Allam
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,19 +20,30 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-
 package org.asteroid.units;
 
 /**
  * Raised when invalid Unit is passed
  *
- * @author Asteroid Softwares
+ * @author Imtiyaz Allam
  */
-public class InvalidDataException extends RuntimeException{
+public class InvalidDataException extends RuntimeException {
+
     /**
-     * Creates an instance of <code>InvalidDataException</code> class
+     * Creates an instance of <code>InvalidDataException</code> class with
+     * default detail message
      */
-    public InvalidDataException(){
+    public InvalidDataException() {
         super("Invalid unit code");
+    }
+
+    /**
+     * Creates an instance of <code>InvalidDataException</code> class with
+     * specified detail message
+     *
+     * @param msg detail message
+     */
+    public InvalidDataException(String msg) {
+        super(msg);
     }
 }

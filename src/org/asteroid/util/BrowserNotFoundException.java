@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * 
- * Copyright (c) 2022 by Asteroid Softwares
+ * Copyright (c) 2023 by Imtiyaz Allam
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,14 +26,23 @@ package org.asteroid.util;
 /**
  * Raised when the program fails to find the default browser
  *
- * @author Asteroid Softwares
+ * @author Imtiyaz Allam
  */
 public class BrowserNotFoundException extends RuntimeException {
 
     /**
-     * Creates an instance of <code>BrowserNotFoundException</code> class
+     * Creates an instance of <code>BrowserNotFoundException</code> class with default detail message
      */
     public BrowserNotFoundException() {
         super("Failed to get default browser");
+    }
+    
+    /**
+     * Creates an instance of <code>BrowserNotFoundException</code> class with specified detail message
+     * 
+     * @param msg detail message
+     */
+    public BrowserNotFoundException(String msg) {
+        super(msg);
     }
 }

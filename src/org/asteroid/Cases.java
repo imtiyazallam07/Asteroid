@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * 
- * Copyright (c) 2022 by Asteroid Softwares
+ * Copyright (c) 2023 by Imtiyaz Allam
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,7 +27,7 @@ package org.asteroid;
 /**
  * It has the case values for the inputString method of Input class
  * 
- * @author Asteroid Softwares
+ * @author Imtiyaz Allam
  */
 public class Cases {
     public static final byte UPPERCASE = 0;

@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * 
- * Copyright (c) 2022 by Asteroid Softwares
+ * Copyright (c) 2023 by Imtiyaz Allam
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,15 +24,24 @@
 package org.asteroid.units;
 
 /**
- * It helps in unit conversion
+ * Raised when the values passed as argument is negative
  *
- * @author Asteroid Softwares
+ * @author Imtiyaz Allam
  */
 public class NegetiveValueException extends RuntimeException {
     /**
-     * Creates an instance of <code>NegetiveValueException</code> class
+     * Creates an instance of <code>NegetiveValueException</code> class with default detail message
      */
     public NegetiveValueException(){
         super("The value shouldn't be negetive.");
+    }
+    
+    /**
+     * Creates an instance of <code>NegetiveValueException</code> class with specified detail message
+     * 
+     * @param msg detail message  
+     */
+    public NegetiveValueException(String msg) {
+        super(msg);
     }
 }

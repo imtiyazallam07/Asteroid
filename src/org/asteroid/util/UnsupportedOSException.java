@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
- * 
- * Copyright (c) 2022 by Asteroid Softwares
+ *
+ * Copyright (c) 2023 by Imtiyaz Allam
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,22 +20,30 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-
 package org.asteroid.util;
 
 /**
  * raised when Operating System is not capable of performing the given task
- * 
- * @author Asteroid Softwares
+ *
+ * @author Imtiyaz Allam
  */
-public class UnsupportedOSException extends RuntimeException{
-    
+public class UnsupportedOSException extends RuntimeException {
+
     /**
-     * Creates an instance of <code>UnsupportedOSException</code> class
-     *
-     * @param task 
+     * Creates an instance of <code>UnsupportedOSException</code> class with a
+     * default detail message
      */
-    public UnsupportedOSException(String task) {
-        super("Operating System not supported to perform task: " + task);
+    public UnsupportedOSException() {
+        super("Operating System does not support to perform task");
+    }
+
+    /**
+     * Creates an instance of <code>UnsupportedOSException</code> class with
+     * detail message
+     *
+     * @param msg detail message
+     */
+    public UnsupportedOSException(String msg) {
+        super(msg);
     }
 }

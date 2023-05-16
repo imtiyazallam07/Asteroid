@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * 
- * Copyright (c) 2022 by Asteroid Softwares
+ * Copyright (c) 2023 by Imtiyaz Allam
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,7 +26,7 @@ package org.asteroid;
 /**
  * Accepting data from the user
  *
- * @author Asteroid Softwares
+ * @author Imtiyaz Allam
  */
 public class Input extends Cases {
 
@@ -49,11 +49,11 @@ public class Input extends Cases {
         try {
             temp2 = Long.parseLong(temp);
             if (temp2 >= -128 && temp2 <= 127) {
-                return Byte.parseByte(temp);
+                return Byte.valueOf(temp);
             } else if (temp2 >= -32768 && temp2 <= 32767) {
-                return Short.parseShort(temp);
+                return Short.valueOf(temp);
             } else if (temp2 >= -2147483648 && temp2 <= 2147483647) {
-                return Integer.parseInt(temp);
+                return Integer.valueOf(temp);
             } else {
                 return temp2;
             }
@@ -64,7 +64,7 @@ public class Input extends Cases {
                 return temp3;
             } catch (NumberFormatException f) {
                 if ((temp.equals("true")) || temp.equals("false")) {
-                    return ((Boolean.parseBoolean(temp)));
+                    return ((Boolean.valueOf(temp)));
                 } else if (temp.length() == 1) {
                     return (temp.charAt(0));
                 } else if (temp.length() == 0) {

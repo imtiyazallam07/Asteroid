@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  *
- * Copyright (c) 2022 by Asteroid Softwares
+ * Copyright (c) 2023 by Imtiyaz Allam
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -47,7 +47,7 @@ import org.asteroid.Files;
  * for a value, informs them of something, choose file and get other data from
  * the user through GUI
  *
- * @author Asteroid Softwares
+ * @author Imtiyaz Allam
  */
 public final class Dialogs {
 

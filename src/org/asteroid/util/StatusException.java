@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * 
- * Copyright (c) 2022 by Asteroid Softwares
+ * Copyright (c) 2023 by Imtiyaz Allam
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,7 +27,7 @@ package org.asteroid.util;
  * Raised when the audio status is equals to the given command. Meaning audio is
  * being played but play command is given.
  *
- * @author Asteroid Softwares
+ * @author Imtiyaz Allam
  */
 public class StatusException extends RuntimeException {
 
@@ -39,5 +39,12 @@ public class StatusException extends RuntimeException {
      */
     public StatusException(String msg) {
         super(msg);
+    }
+    
+    /**
+     * Creates an instance of <code>StatusException</code> class without a detail message
+     */
+    public StatusException() {
+        super();
     }
 }

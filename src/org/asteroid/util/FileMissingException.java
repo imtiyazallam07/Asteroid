@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * 
- * Copyright (c) 2022 by Asteroid Softwares
+ * Copyright (c) 2023 by Imtiyaz Allam
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,12 +26,12 @@ package org.asteroid.util;
 /**
  * Raised when file is missing
  *
- * @author Asteroid Softwares
+ * @author Imtiyaz Allam
  */
 public class FileMissingException extends RuntimeException {
 
     /**
-     * Creates an instance of <code>FileMissingException</code> class
+     * Creates an instance of <code>FileMissingException</code> class with default detail message
      */
     public FileMissingException() {
         super("The files are missng. Failed to perform the requirded task.");
@@ -41,7 +41,7 @@ public class FileMissingException extends RuntimeException {
      * Creates an instance of <code>FileMissingException</code> class with a
      * specified message
      *
-     * @param msg Detailed messagse
+     * @param msg detail messagse
      */
     public FileMissingException(String msg) {
         super(msg);

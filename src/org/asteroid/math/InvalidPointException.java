@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  *
- * Copyright (c) 2022 by Asteroid Softwares
+ * Copyright (c) 2023 by Imtiyaz Allam
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,14 +20,30 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-import org.asteroid.util.Automation;
+package org.asteroid.math;
 
-public class TestFile {
+/**
+ * Raised when the point is not valid. (Valid point has 1 dimension to 3
+ * dimension)
+ *
+ * @author Imtiyaz Allam
+ */
+public class InvalidPointException extends RuntimeException {
 
-    public static void main(String[] args) throws Exception {
-        Automation ab = new Automation();
-        Thread.sleep(3000);
-        
-        ab.type(new int[] {Automation.VK_H, Automation.VK_E, Automation.VK_CAPS_LOCK, Automation.VK_L, Automation.VK_L, Automation.VK_O}, 200);
+    /**
+     * Creates a new instance of <code>InvalidPointException</code> without
+     * detail message.
+     */
+    public InvalidPointException() {
+    }
+
+    /**
+     * Constructs an instance of <code>InvalidPointException</code> with the
+     * specified detail message.
+     *
+     * @param msg the detail message.
+     */
+    public InvalidPointException(String msg) {
+        super(msg);
     }
 }

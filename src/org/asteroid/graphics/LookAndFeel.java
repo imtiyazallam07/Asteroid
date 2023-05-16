@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * 
- * Copyright (c) 2022 by Asteroid Softwares
+ * Copyright (c) 2023 by Imtiyaz Allam
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,7 +29,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 /**
  * Changes the look and feel of swing graphics
  *
- * @author Asteroid Softwares
+ * @author Imtiyaz Allam
  */
 public final class LookAndFeel {
 

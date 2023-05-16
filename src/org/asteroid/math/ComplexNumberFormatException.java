@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  *
- * Copyright (c) 2022 by Asteroid Softwares
+ * Copyright (c) 2023 by Imtiyaz Allam
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,31 +20,31 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package org.asteroid.maths;
+package org.asteroid.math;
 
 /**
- * Raised by methods to indicate that the index is greater than the size of the
- * number
- *
- * @author Asteroid Softwares
+ * Thrown to indicate that the application has attempted to convert
+ * a string to one of the numeric types, but that the string does not
+ * have the appropriate format.
+ * @author Imtiyaz Allam
  */
-public class NumberIndexOutOfBoundsException extends RuntimeException {
+public class ComplexNumberFormatException extends RuntimeException{
 
     /**
-     * Creates a new instance of <code>NumberOutOfBoundException</code> without
-     * detail message.
+     * Creates a new instance of <code>ComplexNumberFormatException</code>
+     * without detail message.
      */
-    public NumberIndexOutOfBoundsException() {
+    public ComplexNumberFormatException() {
         super();
     }
 
     /**
-     * Constructs an instance of <code>NumberOutOfBoundException</code> with the
-     * specified detail message.
+     * Constructs an instance of <code>ComplexNumberFormatException</code> with
+     * the specified detail message.
      *
      * @param msg the detail message.
      */
-    public NumberIndexOutOfBoundsException(String msg) {
+    public ComplexNumberFormatException(String msg) {
         super(msg);
     }
 }
