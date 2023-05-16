@@ -181,7 +181,7 @@ public class Set<E> {
     /**
      * Returns a string representation of the object.
      *
-     * @apiNote In general, the {@code toString} method returns a string that
+     * In general, the {@code toString} method returns a string that
      * "textually represents" this object. The result should be a concise but
      * informative representation that is easy for a person to read.
      *
