@@ -11,7 +11,7 @@ It is a basic all purpose Java package.
 
 ## Authors
 
-- [@Imtiyaz Allam](https://www.github.com/asteroid-softwares)
+- [@Imtiyaz Allam](https://github.com/imtiyazallam07)
 
 
 ## Documentation and Jar file
